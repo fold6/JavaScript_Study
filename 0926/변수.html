@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>변수</title>
+</head>
+
+<body>
+    <h2>변수</h2>
+    <script>
+        'use strict' //자바 스크립트 엄격형으로 선언 
+        var num;
+        num = 10;
+        console.log(num); // 변수값
+        console.log("num"); // 문자열
+        // [변수명 선언시 주의사항]
+        // 변수명 선언시 예약어(자바스크립트 명령어)를 사용금지
+        // 공백은 허용하지 않음
+        // 숫자로 시작할 수 없음
+        // 사용가능한 문자는 영문자, 숫자, _, $ 등으로 사용가능
+
+        // [에러 예시]
+        var num2;
+        num2 = 20; // 주석시 아래 결과
+        console.log(num2); // undefined
+
+        // ----------------------------
+
+        var num3;
+        num3 = 30;
+        document.write("더하기: " + (num2 + num3) + "<br>");
+        console.log(num3);
+
+        let age;
+        age = 30;
+        console.log(age); // 30
+
+        // let age; 
+        // age = 50;
+        // *var를 사용하지 않는 이유 : 같은 이름의 변수를 선언가능하므로 지역변수와 전역변수의 구별이 없음
+
+        let name;
+        name = "김사과";
+        console.log(name);
+
+        let name2;
+        name2 = "박딸기";
+        document.write(("<h1>" + name + name2 + "</h1>"));
+        // + 의 의미 : 글자는 문자열의 합침 , 숫자는 연산
+
+        
+        // ================상수====================
+        // ================상수====================
+        // ================상수====================
+        // var를 사용해서 상수를 선언할때는 값을 대입한 후 두번 대입 안 함
+        // const 를 사용해서 상수를 선언할때 한번값을 선언후 다시 재입력안됨
+        var num5 = 100;
+        document.write("상수 num5" + num5);
+
+        const num6 = '100'; // 상수는 선언할때! 값을 입력해야함
+        // num6 = '200'; < 이런식으로 따로 값을넣으면 오류남
+        document.write("<p>" + num6 + "</p>");
+
+        
+    </script>
+</body>
+
+</html>

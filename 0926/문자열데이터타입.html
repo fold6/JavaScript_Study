@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터 타입-문자열형</title>
+</head>
+
+<body>
+    <h2>데이터 타입-문자열형</h2>
+    <script>
+        'use strict'
+        const num1 = 10; //숫자형
+        const num2 = 5; //숫자형
+        const str1 = "HELLO javaScript"; //문자열형
+        const str2 = "HELLO World"; //문자열형
+        const str3 = "10"; //문자열형
+
+        console.log(num1 + num2); // 숫자연산
+        console.log(num1 + str1); // 문자연산(결합)
+        console.log(num1 + ""); // 문자연산(결합)
+
+        // typeof로 데이터 타입을 반환함
+        console.log(typeof (num1)); // 숫자형
+        console.log(typeof (num1 + "")); // 문자열형
+
+
+        console.log(str1 + "" + str2); // 문자연산(결합)
+        console.log(str1 + "\n" + str2); // 문자연산(결합) 줄바꿈
+
+
+        //10 + 5 = 15
+        console.log(num1 + '+' + num2 + '=' + (num1 + num2));
+        console.log(`${num1} + ${num2} = ${num1+num2}`); // 백커트를 사용하면 쉬움
+    </script>
+</body>
+
+</html>
