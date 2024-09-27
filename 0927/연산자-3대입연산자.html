@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연산자-3대입연산자</title>
+
+</head>
+
+<body>
+    <h2>연산자-3대입연산자</h2>
+    <script>
+        'use strict';
+        let num1 = 10;
+        let num2 = 10;
+        let num3 = 10;
+
+        // num1 + 10 = num1
+        num1 += 10;
+        // 대입 연산자
+        //=: 우측의 값을 왼쪽(변수 또는 상수)에 대입 후 값을 반환 10 + 10 = 20임
+        console.log(`num1 += 10 : ${num1}`);
+
+        //num2 - 10 = num1
+        num2 -= 10;
+        console.log(`num2 -= 10 : ${num2}`);
+
+        num3 = - -5;
+        console.log(`num3 =- 10 : ${num3}`);
+
+        num1 -= num1
+        //num -=
+        console.log(`num1 -= num1 : ${num1}`);
+
+        
+    </script>
+
+</body>
+
+</html>

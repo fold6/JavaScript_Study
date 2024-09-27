@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대화상자</title>
+
+</head>
+
+<body>
+    <h2>대화상자</h2>
+    <script>
+        'use strict';
+        // alert('안녕하세요JS!');
+        // document.write('확인눌렀습니다')
+
+        // const result = confirm ('확인이나 취소를 눌러주세요');
+        // console.log(result);
+        // 확인 및 취소에 따라 t/f가 반환되므로 이 값을 받아 다음 단계로 넘어갈수있게 코딩등 가능
+
+        // const name = prompt('당신의 이름을 입력하세요');
+        // console.log(`당신의 이름은 ${name}이군요. 반갑습니다.`);
+        // console.log(`name의 타입 : ${typeof(name)}`);
+        // 대화상자의 답이 하나 밖에 없으므로 const (상수)를 사용하는것 (새로고침 할때마다 바뀌는 답이 아님)
+        
+        const num1 = prompt('첫번째 숫자 입력');
+        const num2 = prompt('두번째 숫자 입력');
+        console.log(`두수의 합 : ${Number(num1) + Number(num2)}`); // 합계를 출력
+        document.write(`두수의 합 : ${Number(num1) + Number(num2)}`); // 합계를 문서에 작성
+    </script>
+</body>
+
+</html>

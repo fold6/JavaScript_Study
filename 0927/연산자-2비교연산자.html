@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연산자-2비교연산자</title>
+
+</head>
+
+<body>
+    <h2>연산자-2비교연산자</h2>
+    <script>
+        'use strict';
+        const num1 = 3;
+        const num2 = 5;
+        const str1 = "3";
+        const str2 = "abcde";
+        const str3 = "bcd";
+
+        let result = num1 > num2;
+        console.log(`num1 > num2 : ${result}`);
+
+        result = str2 <= str3; // "abcde" <= "bcd" => true : 아스키코드 비교
+        console.log(`str2 <= str3 : ${result}`);
+
+        result = num1 === str1;
+        console.log(`num1 == str1 : ${result}`); //데이터 타입이 다르기 때문에 false나옴
+
+
+        result = num1 != str1;
+        console.log(`num1 != str1 = ${result}`); //같지않다 가 틀렸으니까 false (둘 다 3,3)
+
+        result = num1 !== str1;
+        console.log(`num1 != str1 = ${result}`); //같지않다 가 맞으니까 frue (둘 다 3,3)
+    </script>
+
+</body>
+
+</html>

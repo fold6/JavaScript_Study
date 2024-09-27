@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연산자-5논리연산자</title>
+</head>
+
+<body>
+    <h2>연산자-5논리연산자</h2>
+    <script>
+        'use strict';
+        const num1 = 10;
+        const num2 = 5;
+
+        
+        //상태
+        let result1 = num1 == num2 ; //f
+        let result2 = num1 >= num2 ; //t
+        
+        console.log(`result1 && result2 : ${result1 && result2}`); // and 둘다 참이여야 참 f
+        console.log(`result1 || result2 : ${result1 || result2}`); // or 둘 중하나만 참이면 참 t
+        console.log(`!result1: ${!result1}`); // not 참이면 거짓, 거짓이면 참 t
+
+        
+    </script>
+
+</body>
+
+</html>
