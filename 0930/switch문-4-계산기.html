@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+        let A = 10, B = 5, C = op;
+        op = prompt('연산자를 선택하세요');
+
+
+        switch (op) {
+            case '+':
+                C = A + B
+                document.write("더하기를 선택함 값은" + C);
+                break;
+            case '-':
+                C = A - B
+                document.write("더하기를 선택함 값은" + C);
+                break;
+            case '*':
+                C = A * B
+                document.write("더하기를 선택함 값은" + C);
+                break;
+            case '/':
+                C = A / B
+                document.write("더하기를 선택함 값은" + C);
+                break;
+
+            default:
+                document.write("잘못누름!");
+        }
+    </script>
+</body>
+
+</html>

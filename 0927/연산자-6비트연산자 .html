@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연산자-6비트연산자</title>
+</head>
+
+<body>
+    <h2>연산자-6비트연산자</h2>
+    <script>
+        'use strict';
+        /* 
+            let num = 25
+            64 32 16 8 4 2 1 
+            &(and), |(or), ^(XOR ), <<(왼쪽 시프트), >>(오른쪽 시프트)
+            컴퓨터는 2진법으로 이뤄져있음 : 0(거짓), 1(참)
+        */
+        //                          64 32 16 8 4 2 1 
+        const num1 = 25; // 0 0 1 1 0 1
+        const num2 = 18; // 0 0 1 0 0 1 0
+        //  0 0 1 0 0 0 0
+
+        console.log(`num1 & num2 : ${num1 & num2}`); // 16
+        console.log(`num1 | num2 : ${num1 | num2}`); // 27
+        console.log(`num1 >> 2 : ${num1 >>  2}`);
+        console.log(`num1 << 2 : ${num1 << 2}`); // 100
+    </script>
+
+</body>
+
+</html>

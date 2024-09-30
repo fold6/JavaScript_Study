@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if문-2</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+        const blood = prompt('혈액형 입력하세요'); // A,B,O,AB
+        const type = prompt('RH+ 또는 RH-를 선택하세요'); // +,-
+
+        // 당신의 혈액형은 A 형이며 타입은 RH+입니다.
+        // 대소문자 구분 위해 OR연산자 넣음 
+        if (blood == 'A' || blood == 'a') {
+            if (type == '+') {
+                console.log('당신의 혈액형은 A 형이며 RH+ 입니다.');
+            }
+            if (type == '-') {
+                console.log('당신의 혈액형은 A 형이며 RH- 입니다.');
+            }
+        }
+        if (blood == 'B' || blood == 'b') {
+            if (type == '+') {
+                console.log('당신의 혈액형은 B 형이며 RH+ 입니다.');
+            }
+            if (type == '-') {
+                console.log('당신의 혈액형은 B 형이며 RH- 입니다.');
+            }
+        }
+        if (blood == 'O' || blood == 'o') {
+            if (type == '+') {
+                console.log('당신의 혈액형은 O 형이며 RH+ 입니다.');
+            }
+            if (type == '-') {
+                console.log('당신의 혈액형은 O 형이며 RH- 입니다.');
+            }
+        }
+        if (blood == 'AB' || blood == 'ab') {
+            if (type == '+') {
+                console.log('당신의 혈액형은 AB 형이며 RH+ 입니다.');
+            }
+            if (type == '-') {
+                console.log('당신의 혈액형은 AB 형이며 RH- 입니다.');
+            }
+        }
+    </script>
+</body>
+
+</html>

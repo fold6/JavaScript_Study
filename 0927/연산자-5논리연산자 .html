@@ -15,17 +15,28 @@
         const num1 = 10;
         const num2 = 5;
 
-        
+
         //상태
-        let result1 = num1 == num2 ; //f
-        let result2 = num1 >= num2 ; //t
-        
+        let result1 = num1 == num2; //f
+        let result2 = num1 >= num2; //t
+
         console.log(`result1 && result2 : ${result1 && result2}`); // and 둘다 참이여야 참 f
         console.log(`result1 || result2 : ${result1 || result2}`); // or 둘 중하나만 참이면 참 t
         console.log(`!result1: ${!result1}`); // not 참이면 거짓, 거짓이면 참 t
 
-        
+
+
+        // 응용 
+        // if 문을 사용하여 result2이 참이면 배경색을 레드 등의 css 변경 (참임)
+        // 
+        if (result2) {
+            document.body.style.backgroundColor = "red";
+            document.body.style.color = "white";
+            document.body.style.fontSize = "20px";
+
+        }
     </script>
+
 
 </body>
 

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if_else문-5-삼항연산자(성적관리프로그램</title>
+</head>
+
+<body>
+    <h2>if_else문-5-삼항연산자(성적관리프로그램</h2>
+    <script>
+        'use strict';
+        // 변수 =  조건 ? 참일때 : 거짓일때 값 
+
+        const name = prompt('이름을 입력하세요');
+        const kor = Number(prompt('국어 점수를 입력해주세요'));
+        const eng = Number(prompt('영어 점수를 입력해주세요'));
+        const math = Number(prompt('수학 점수를 입력해주세요'));
+
+        const total = kor + eng + math;
+        const avg = parseInt(total / 3); // 소수점 밑으로 버림 
+        
+
+        // 학점 변수를 추가
+        let hakjum;
+        if (avg > 90) {
+            hakjum = 'A'; // A학점
+        } else if (avg > 80) {
+            hakjum = 'B'; // B학점
+        } else if (avg > 70) {
+            hakjum = 'C'; // C학점
+        } else if (avg > 60) {
+            hakjum = 'D'; // D학점
+        } else {
+            hakjum = 'F'; // F학점
+        }
+
+        document.write(`<h2>${name}님 성적표</h2>`);
+        document.write(`<p>국어 점수 : ${kor}점</p>`);
+        document.write(`<p>영어 점수 : ${eng}점</p>`);
+        document.write(`<p>수학 점수 : ${math}점</p>`);
+        document.write(`<p>총점 : ${total}점</p>`);
+        document.write(`<p>평균 : ${avg}점</p>`);
+        document.write(`<p>학점 : ${hakjum}학점</p>`);
+    </script>
+
+</body>
+
+</html>
