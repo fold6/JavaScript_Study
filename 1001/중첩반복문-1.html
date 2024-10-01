@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+        let i = 1, j = 1; // i와 j 변수를 각각 1로 초기화
+
+        while (i <= 3) { // 외부 while 루프: i 값이 3 이하일 때까지 반복
+            document.write(`현재 i의 값: ${i}<br>`); // i 값 출력 (1, 2, 3 순서로 출력)
+
+            while (j <= 5) { // 내부 while 루프: j 값이 5 이하일 때까지 반복
+                document.write(`======> 현재 j의 값 ${j}<br>`); // j 값 출력 (1, 2, 3, 4, 5 순서로 출력)
+                j++; // j 값을 1씩 증가시킴
+            }
+
+            j = 1; // j 값을 다시 1로 초기화하여 내부 루프를 다시 1부터 시작하게 함
+            i++; // i 값을 1씩 증가시켜 외부 루프를 진행
+        }
+    </script>
+
+</body>
+
+</html>

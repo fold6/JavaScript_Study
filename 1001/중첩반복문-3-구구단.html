@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+        for (let i = 2; i <= 9; i++) { // 외부 for 루프: i가 1부터 9까지 반복
+            document.write(`${i}단: <br>`); // 현재 i의 값을 출력 (1단부터 9단까지 표시)
+            for (let j = 1; j <= 9; j++) { // 내부 for 루프: j가 1부터 9까지 반복
+                document.write(`${i} * ${j} = ${i * j}<br>`); // i * j의 곱셈 결과 출력
+            }
+        }
+    </script>
+
+</body>
+
+</html>

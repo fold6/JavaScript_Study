@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1~100까지 짝수의합</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+        let i = 1;
+        let sum = 0;
+
+        while (i <= 100) {
+            if (i % 2 == 0) { // 2로 나눳을때 0이되는게 짝수니까 2,4,6... 으로 걸러짐
+                sum = sum + i;
+            }
+            i++;
+        }
+        document.write(`1부터 100까지의 짝수의 합 : ${sum}`)
+    </script>
+</body>
+
+</html>

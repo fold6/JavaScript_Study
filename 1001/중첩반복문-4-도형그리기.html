@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        // 첫 번째 패턴: 가로 5줄, 세로 5줄의 별 출력
+        for (let i = 1; i <= 5; i++) { // 외부 루프: i는 1부터 5까지 반복 (5개의 줄을 의미)
+            for (let j = 1; j <= 5; j++) { // 내부 루프: j는 1부터 5까지 반복 (각 줄에 5개의 별을 출력)
+                document.write('☆ '); // 별을 출력
+            }
+            document.write('<br>'); // 한 줄에 별 5개 출력 후 줄바꿈
+        }
+
+        document.write('<br><hr><br>'); // 줄바꿈과 구분선
+
+        // 두 번째 패턴: 첫 줄에 5개, 둘째 줄에 4개, ... 마지막 줄에 1개의 별 출력
+        for (let i = 1; i <= 5; i++) { // 외부 루프: i는 1부터 5까지 반복 (5개의 줄을 의미)
+            for (let j = i; j <= 5; j++) { // 내부 루프: j는 i부터 5까지 반복 (i가 증가할수록 별이 줄어듦)
+                document.write('☆ '); // 줄마다 별 출력 (첫 줄엔 5개, 두 번째 줄엔 4개 ...)
+            }
+            document.write('<br>'); // 각 줄 끝에 줄바꿈
+        }
+
+        document.write('<br><hr><br>'); // 줄바꿈과 구분선
+
+        // 세 번째 패턴: 첫 줄에 1개, 둘째 줄에 2개, ... 마지막 줄에 5개의 별 출력
+        for (let i = 1; i <= 5; i++) { // 외부 루프: i는 1부터 5까지 반복 (5개의 줄을 의미)
+            for (let j = 1; j <= i; j++) { // 내부 루프: j는 1부터 i까지 반복 (i가 증가할수록 별이 많아짐)
+                document.write('☆ '); // 줄마다 별 출력 (첫 줄엔 1개, 두 번째 줄엔 2개 ...)
+            }
+            document.write('<br>'); // 각 줄 끝에 줄바꿈
+        }
+    </script>
+
+
+</body>
+
+</html>

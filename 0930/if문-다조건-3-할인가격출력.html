@@ -16,23 +16,28 @@
         //10000원 이상 구매시 10% 할인 가격  *0.1
         //5000원 이상 구매시 3% 할인 가격  *0.03
         //1000원 이상 구매시 1% 할인 가격  *0.01
+        let price1, price2; // 가격을 저장할 변수 선언
+        price1 = Number(prompt('가격을 입력하세요')); // 사용자로부터 가격을 입력받고 숫자로 변환하여 price1에 저장
 
-        let price1, price2;
-        price1 = Number(prompt('가격을 입력하세요'));
-
+        // 조건에 따라 할인율 적용
         if (price1 >= 10000) {
-            price2 = price1 * 0.1; // 10% 할인
-        } else if (price1 >= 5000) { 
-            price2 = price1 * 0.05; // 5% 할인
-        } else if (price1 >= 3000) { 
-            price2 = price1 * 0.03; // 3% 할인
-        } else if (price1 >= 1000) { 
-            price2 = price1 * 0.01; // 1% 할인
+            price2 = price1 * 0.1; // 가격이 10,000원 이상이면 10% 할인 적용
+        } else if (price1 >= 5000) {
+            price2 = price1 * 0.05; // 가격이 5,000원 이상 10,000원 미만이면 5% 할인 적용
+        } else if (price1 >= 3000) {
+            price2 = price1 * 0.03; // 가격이 3,000원 이상 5,000원 미만이면 3% 할인 적용
+        } else if (price1 >= 1000) {
+            price2 = price1 * 0.01; // 가격이 1,000원 이상 3,000원 미만이면 1% 할인 적용
         } else {
-            price2 = price1; // 할인 없음
+            price2 = price1; // 가격이 1,000원 미만이면 할인 없음
         }
 
-        document.write("할인 가격: " + price2);
+        if (price2 != price1) { // price2와 price1이 다르면, 즉 할인이 적용된 경우
+            document.write("할인 가격: " + price2 + "입니다"); // 할인이 적용된 가격 출력
+        } else {
+            document.write("할인가격을 적용할 수 없습니다"); // 할인을 적용할 수 없는 경우 메시지 출력
+        }
+        
     </script>
 </body>
 

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+        let i = 1,
+            j = 1;
+
+        while (i > 2) { // 조건 거짓 실행안됨
+            console.log('현재 i의 값: ${i}');
+        }
+
+
+        do {
+            console.log('현재 j의 값 : ${j}');
+        } while (j > 2); //조건 거짓이라서 실행 안되야하는데 됨(최소 한번은 반복을 실행하는 문이라서)
+
+    </script>
+</body>
+
+</html>
