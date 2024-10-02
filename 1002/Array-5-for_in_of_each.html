@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+        let arr1 = ['김사과', 20, 160.5, true];
+        //console.log(arr1);
+        // 배열요소를 출력할때 반복문 사용
+        for (let i = 0; i < arr1.length; i++) {
+            console.log(arr1[i]);
+        }
+
+        console.log('--------------');
+
+        // for in문 : 인덱스 값 1,2,3,4 만 추출도 할 수 있음
+        for (let i in arr1) {
+            console.log(i, arr1[i]);
+        }
+
+        console.log('--------------');
+
+        // for of문 : 객체의 요소를 순회할 때 사용
+        for (let i of arr1) {
+            console.log(i);
+        }
+
+
+        console.log('--------------');
+
+        // for each문 : 오직 Array 객체에서만 사용할 수 있는 메서드
+        arr1.forEach(function (item, idx, arr) {
+            console.log(item, idx, arr)
+        });
+    </script>
+
+
+
+</body>
+
+</html>
