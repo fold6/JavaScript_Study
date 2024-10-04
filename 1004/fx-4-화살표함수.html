@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+        const func1 = () => console.log('안녕하세요 javascript');
+        //화살표함수
+        const func2 = (x, y) => console.log(`매개변수 x와 y의 합 :${x+y}`);
+        //매개변수가 있는 화살표함수
+        const func3 = (start, end) => {
+            //리턴이 되는 화살표함수
+            let sum = 0;
+            for (let i = start; i <= end; i++) {
+                sum += i;
+            }
+            return sum;
+        }
+
+        func1();
+        func2(5, 10);
+        const result = func3(1, 5);
+        // 1 + 2 + 3 + 4 + 5 = 15
+        console.log(result); // 리턴된 함수값 출력
+
+        //동적인 화살표 함수
+        const age = Number(prompt('나이를 입력하세요'));
+        let isAdult = (age > 18) ?
+            () => alert('성인입니다') :
+            () => alert('미성년입니다');
+        isAdult();
+
+        
+    </script>
+
+</body>
+
+</html>

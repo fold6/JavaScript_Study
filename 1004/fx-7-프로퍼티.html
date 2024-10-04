@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+        const user = {
+            userid: 'apple',
+            name: '김사과',
+            gender: '여자',
+            hp: '01054454545',
+            birthday: '20000125',
+            memberId: function () {
+                return "korea" + this.hp; // this는 현재 객체를 말함
+            }
+        }
+        console.log(user); //객체를 이용하여 프로퍼티와 값을 연결
+        console.log(user.userid);
+        console.log(user.name);
+        console.log(user.gender);
+        console.log(user.hp);
+        console.log(user.birthday);
+        console.log(user.memberId()); // 일반적인 함수호출로 바로 실행(메소드)
+        console.log(user.memberId); //함수가 저장
+    </script>
+
+</body>
+
+</html>

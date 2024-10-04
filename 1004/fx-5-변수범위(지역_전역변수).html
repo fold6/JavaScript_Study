@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+        var num1 = 10; // 함수밖에 있으므로, 전역변수
+
+        function func1() {
+            console.log(num1); // 전역변수의 값 출력(10)
+            num1 = 20; // 여기서 다시! 10을 20으로 바꾸므로 아래는 20 출력
+        }
+        func1();
+        console.log(num1); // 20 출력
+
+        var num2 = 30; // 함수밖에 있으므로, 전역변수 (30)
+        console.log('-------');
+
+        function func2() {
+            var num2 = 40; //지역변수 선언 -> 
+            console.log(`num2 : ${num2}`); // 지역변수값 출력 40
+        }
+        func2();
+        console.log(num2); //전역변수값이 찍힘 (30)
+        // var로 변수를 선언할때 함수밖에 있으면 무조건 전역변수
+
+        console.log('-------');
+        var num3 = 50; //전역변수
+        if (num3 == 50) { //전역변수 num3이 50과같으면 100으로 바꿀것임
+            num3 = 100; // 50->100으로 재대입됨
+            console.log(`num3 : ${num3}`); // 지역변수값 출력 40
+        }
+        console.log(num3); // 100 출력
+
+        console.log('-------');
+        var num4 = 50;
+        if (num4 == 50) {
+            var num4 = 100;
+            console.log(`num4 : ${num4}`); // 출력 100
+        }
+        console.log(num4);
+        // 100 출력 < 왜지?  var의 버그! (때문에 var를 쓰지말라고함)
+
+        console.log('-------');
+        let num5 = 50;
+        if (num5 == 50) {
+            let num5 = 100;
+            console.log(`num5 : ${num5}`); // 출력 100
+        }
+        console.log(num5); // 50으로 정상적으로 전역변수값이 출력됨
+        
+    </script>
+
+</body>
+
+</html>

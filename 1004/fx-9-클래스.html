@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+        const dog = class {
+            constructor(name, age, color) {
+                this.name = name;
+                this.age = age;
+                this.color = color;
+                this.family = '포메리안';
+            }
+            play() {
+                return `${this.name}가 즐겁게 놉니다`;
+            }
+        }
+        const Rucy = new dog('루시', '흰색', 10);
+        console.log(Rucy.name);
+        console.log(Rucy.age);
+        console.log(Rucy.color);
+        console.log(Rucy.family);
+        console.log(Rucy.play());
+
+        //기존 값 바꾸기 (클래스는 추가는 안되고 기존 프로퍼티를 바꿀수만 있음)
+        Rucy.age = 11;
+        console.log(Rucy.age);
+        
+    </script>
+
+</body>
+
+</html>

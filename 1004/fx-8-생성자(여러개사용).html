@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+        const car = {
+            name: '소나타',
+            color: 'black',
+            start: function () { //메소드
+                return "시동을 겹니다";
+            },
+        }
+        console.log(car.name);
+        console.log(car.color);
+        console.log(car.start());
+
+        // 생성자를 이용한 객체 생성
+        // 장점 : 객체를 여러개 만들기 편함
+
+        
+        // 아래 처럼 틀(생성자 함수)을 만듦
+        function Dog(name, color){
+            this.name = name;
+            this.color = color;
+            this.sleep = function(){
+                return `${this.name} 가 잠을 잡니다.`;
+            }
+        }
+
+        //위에 들에 아래 객체를 대입함
+        const Rucy = new Dog("루시","흰색");
+        console.log(Rucy.name);
+        console.log(Rucy.color);
+        console.log(Rucy.sleep());
+        
+        const PPomi = new Dog("뽀미","흰색");
+        console.log(PPomi.name);
+        console.log(PPomi.color);
+        console.log(PPomi.sleep());
+
+
+    </script>
+
+</body>
+
+</html>
