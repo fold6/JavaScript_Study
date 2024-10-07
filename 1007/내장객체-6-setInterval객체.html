@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        // 실행할 함수
+        const hi = function () {
+            console.log('2초마다 실행되는 hi 함수');
+        };
+
+        console.log('안녕하세요 자바스크립트');
+
+        // si 변수를 전역으로 정의
+        let si = null;
+
+        // clearInter 함수 정의
+        const clearInter = function () {
+            clearInterval(si);
+            console.log('hi 함수가 중지되었습니다');
+        };
+
+        // 2초마다 hi 함수 실행
+        si = window.setInterval(hi, 2000); // 2초마다 hi 함수 호출
+    </script>
+    <button onclick="clearInter()">hi 함수 중지</button>
+
+
+</body>
+
+</html>

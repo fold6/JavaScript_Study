@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        //String 객체: 문자열을 손쉽게 만들고 다룰 수 있도록 해줌.
+        'use strict';
+        const str1 = "안녕하세요. JavaScript";
+        console.log(str1.length); // 문자글자 길이를 보여줌
+
+        // indexOf() : 매개변수로 전달된 문자열이 처음 등장하는 위치를 리턴
+        console.log(str1.indexOf("J")); // 7
+        console.log(str1.indexOf("Java")); // 7
+        console.log(str1.indexOf("java")); // -1 대소문자를 구별-> 찾지못하면 -1을 retrun함
+        console.log(str1.indexOf("a")); // 8 앞(내뜻은 뒤)에서 탐색
+        console.log(str1.lastIndexOf("a")); // 10 뒤(내뜻은 앞)에서 탐색 
+
+        console.log(str1.charAt(7)); // j 7번째 글자를 리턴
+
+        console.log(str1.includes('Java')); // true 현재 지정된 글자가 포함 됐는지 확인
+        console.log(str1.includes('java')); // false 대소문자 구분해서 소문자임으로 확인불가
+
+        console.log(str1.substring(7)); //JavaScript, 매개변수가 1개일 경우 해당 (인덱스) 부터 끝까지 문자열을 추출
+        console.log(str1.substring(7, 11)); //7부터 11직전까지 문자 추출 Java
+
+        console.log(str1.substr(7, 4)); //java, 7은 위치, 위치부터~4는 추출하고자 하는 문자 수 
+
+        const str2 = "드라이브,영화감상,게임,쇼핑,잠자기,여행"; // 단순한 문자열 데이터
+        const hobby = str2.split(","); // 기준을 정하고 (,) 하나하나 배열로 저장이 됨
+
+        /* 
+        hobby[0] = "드라이브";
+        ... 이렇게 저장됨
+         */
+
+
+        // for of는 객체를 추출하는것임(위저장값이 아래 for문을통해 추출됨)
+        for (let h of hobby) {
+            console.log(h);
+        }
+
+        hobby.forEach(function (val, idx, arr) {
+            console.log(`값:${val}, 인덱스:${idx}, 배열:${arr}`);
+        });
+        
+        console.log('-----------------');
+
+        console.log(str1.replace('안녕하세요','HELLO')); // '바꿀글자','바꾸어진 글자'
+        // HELLO JavaScript
+
+        //공백을 trim함 class 이름이 el01 el02 이런식이면 이걸로 1,2 숫자값만 가져올수잇어서 쓰기도함
+        const str3 = "     Javascript     "
+        console.log(`|${str3}|`); // |     javascript     |
+        console.log(`|${str3.trim()}|`); //|javascript|
+
+        //대/소문자로 변환
+        console.log(str3.toLowerCase()); //소문자
+        console.log(str3.toUpperCase()); //대문자
+
+    </script>
+
+</body>
+
+</html>

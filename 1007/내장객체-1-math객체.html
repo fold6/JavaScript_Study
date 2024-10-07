@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        //Math 객체: 수학에서 자주 사용하는 상수와 함수들을 미리 구현해 둔 자바스크립트 내장 객체임.
+        'use strict';
+        console.log(Math.min()); //최소값
+        console.log(Math.max()); //최대값
+        console.log(Math.min(1, 10, -10, 1000, 0)); //-10
+        console.log(Math.max(1, 10, -10, 1000, 0)); //1000
+        console.log(Math.max(1, 10, -10, "천", 0)); // NaN (Not a Number / 컴퓨터가 표시할 수 없는 값="천")
+
+        
+        console.log('-------round--------');
+        // round() : 소숫점 첫째 값까지만 반올림
+        console.log(Math.round(10.49)); //10 
+        console.log(Math.round(10.5)); //11
+        console.log(Math.round(-10.5)); //-10
+        console.log(Math.round(-10.51)); //-11
+
+
+        // round() : 소숫점 첫째 값까지만 내림
+        console.log('-------floor--------');
+        console.log(Math.floor(10.49)); //10 
+        console.log(Math.floor(10.5)); //10
+        console.log(Math.floor(-10.5)); //-11
+        console.log(Math.floor(-10.51)); //-11
+
+
+        // ceil() : 소숫점 첫번째 자리에서 올림
+        console.log('-------ceil--------');
+        console.log(Math.ceil(10.49)); //11
+        console.log(Math.ceil(10.5)); //11
+        console.log(Math.ceil(-10.5)); //-10
+        console.log(Math.ceil(-10.51)); //-10
+
+
+        // random() : 0보다 크거나 같고 1보다 작은 무작위 소수를 리턴
+        console.log('-------random--------');
+        // 0 ~ 0.9999999...
+        console.log(Math.random());
+
+        // 1~6 (소숫점 포함한 긴 수 나옴)
+        console.log(Math.random() * 6);
+
+        // floor와 같이 써서 정수값이 나옴
+        console.log(Math.floor(Math.random()* 6));
+        
+        //0~9 // 0부터
+        console.log(Math.floor(Math.random()* 10));
+
+        //1~10 // +1을 했기 때문에 0이 안나오게되고 1부터 시작하게 됨
+        console.log(Math.floor(Math.random()* 10) + 1);
+
+    </script>
+
+</body>
+
+</html>

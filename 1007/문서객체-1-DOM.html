@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <h2 id="dom">문서객체 모델</h2>
+    <ul>
+        <li class="front">html</li>
+        <li class="front">css</li>
+        <li class="front">java script</li>
+        <li class="front">jQuery</li>
+        <li class="serverside">PHP</li>
+        <li>node.js</li>
+        <li class="front">React</li>
+    </ul>
+
+    <script>
+        'use strict';
+        //id -> object
+        const id = document.getElementById('dom');
+        id.style.color = 'deeppink';
+
+        //tag name -> list 라고 생각함 그래서 배열 (for)문으로 선택해야함
+        const tagName = document.getElementsByTagName('li');
+        // tagName.style.color = 'red';
+        for (let i = 0; i < tagName.length; i++) {
+            tagName[i].style.color = 'red';
+        }
+
+        //class name -> list (이것도 배열 for문으로 처리해야함)
+        const className = document.getElementsByClassName('front');
+        for (let i = 0; i < className.length; i++) {
+            className[i].style.color = 'deepskyblue';
+        }
+
+        //list라서 반드시 반복문으로 씀
+        const querySelector = document.querySelectorAll('li.serverside');
+        for (let i = 0; i < querySelector.length; i++) {
+            querySelector[i].style.color = 'gold';
+        }
+
+        const querySelectorId = document.querySelector('#dom');
+        querySelectorId.style.color = 'green';
+
+    </script>
+
+
+</body>
+
+</html>

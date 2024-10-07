@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        //Date 객체: 날짜, 시간 등을 쉽게 처리할 수 있는 내장 객체
+        'use strict';
+        console.log(new Date());
+        console.log(new Date(24, 10, 7)); // 1924 10 7
+        console.log(new Date(2024, 10, 7)); // 연도 4자리로 해야 현재시점 2024 10 7
+        console.log(new Date(2024, 9, 7)); // 연도 4자리로 해야 현재시점 10월->9월
+        console.log(new Date(40000000)); // 1982....
+
+        const date = new Date(); // 날짜 객체화
+        console.log(date);
+
+        console.log(`현재 년도 : ${date.getFullYear()}`);
+        console.log(`현재 월 : ${date.getMonth() + 1}`);
+        console.log(`현재 일 : ${date.getDate()}`);
+
+        console.log(`현재 시간 : ${date.getHours()}`);
+        console.log(`현재 분 : ${date.getMinutes()}`);
+        console.log(`현재 초 : ${date.getSeconds()}`);
+
+        const hour = date.getHours();
+        const minute = date.getMinutes();
+        const second = date.getSeconds();
+
+        document.write(`현재시간: ${hour}시 ${minute}분 ${second}초`);
+    </script>
+
+</body>
+
+</html>
