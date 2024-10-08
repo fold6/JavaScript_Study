@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        .item {
+            background-color: deeppink;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>노드의 교체</h2>
+    <div id="parent">
+        <p id="first">김사과</p>
+        <p>오렌지</p>
+        <p>반하나</p>
+    </div>
+
+    <p id="second">이메론</p>
+    <hr />
+    <p id="text">제가 좋아하는 과일은 사과입니다</p>
+
+    <button onclick="changeNode()">요소 노드 교체</button>
+    <button onclick="changeText()">텍스트 노드 교체</button>
+
+
+    <script>
+        'use strict';
+        // 요소 교체
+        const changeNode = function () {
+            const parent = document.getElementById('parent');
+            const first = document.getElementById('first');
+            const second = document.getElementById('second');
+
+            parent.replaceChild(second, first);// 교체될요소, 교체되었을때의 요소
+        }
+
+        // 텍스트교체
+        const changeText = function(){
+            const text = document.getElementById('text').firstChild
+            text.replaceData(12, 2, '메론'); //글자위치, 글자수, '입력할글자'
+        }
+    </script>
+</body>
+
+</html>

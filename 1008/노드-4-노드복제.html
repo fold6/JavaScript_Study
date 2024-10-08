@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        .item {
+            background-color: deeppink;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>노드의 복제</h2>
+
+    <h3 id="item">복제될 아이템입니다 </h3>
+    <div id="list">
+        <p>HTML</p>
+        <p id="item"> Css </p>
+        <p id="js"> JavaScript </p>
+    </div>
+    <button onclick="cloneElement()">노드복제</button>
+
+    <script>
+        'use strict';
+        const cloneElement = function () {
+            const parent = document.getElementById('list'); //부모
+            const originItem = document.getElementById('item')//복제할요소
+            parent.appendChild(originItem. cloneNode(true));
+        }
+
+
+    </script>
+</body>
+
+</html>

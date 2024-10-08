@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 로드</title>
+
+    <script>
+        'use strict';
+        document.addEventListener('DOMContentLoaded', () => { //DOMContentLoaded 현재 문서 열리면 실행
+            const rects = document.querySelectorAll('.rect'); // 클래스명 'rect'로 수정
+
+            rects.forEach((rect, idx) => {
+                const width = (idx + 1) * 100; // 가로값 100부터 시작
+                const src = `http://placekitten.com/${width}/250`; // width 변수 오타 수정
+                rect.setAttribute('src', src); // src 속성 설정
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <img src="" class="rect">
+    <img class="rect">
+    <img class="rect">
+    <img class="rect">
+
+</body>
+
+</html>

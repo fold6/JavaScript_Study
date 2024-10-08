@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노드 추가 예제</title>
+</head>
+
+<body>
+    <h2>노드의 추가</h2>
+    <p id="item1">JavaScript</p>
+    <p id="item2">PHP</p>
+    <hr />
+
+    <div id="list">
+        <p id="js">node.js</p>
+        <p>react</p>
+    </div>
+
+    <hr />
+    <p id="text">지금 시간은 오전 10시 30분입니다.</p>
+
+    <button onclick="appendNode()">노드추가</button>
+    <button onclick="insertNode()">노드추가2</button>
+    <button onclick="appendText()">텍스트추가</button>
+
+    <script>
+        'use strict';
+
+        /* appendChild() : 새로운 노드를 해당 노드의 자식 노드 리스트 맨 마지막에 추가  */
+        const appendNode = function () {
+            const parent = document.getElementById('list');
+            const newItem = document.getElementById('item1');
+            parent.appendChild(newItem); // appendChild로 수정
+        }
+
+        /*  insertBefore() : 새로운 노드를 특정 자식 노드 바로 앞에 추가*/
+        const insertNode = function () {
+            const parent = document.getElementById('list');
+            const js = document.getElementById('js');
+            const newItem = document.getElementById('item2');
+            parent.insertBefore(newItem, js); // 부모와 자식요소의 첫번째를 지정
+        }
+
+        /* insertData() : 새로운 노드를 텍스트 데이터에 새로운 텍스트로 추가 */
+        const appendText = function () {
+            const text = document.getElementById('text').firstChild
+            text.insertData(7, "아주 즐거운"); // 글자위치, "입력할 텍스트"
+        }
+    </script>
+</body>
+
+</html>

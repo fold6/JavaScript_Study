@@ -38,6 +38,9 @@
         for (let i = 0; i < className.length; i++) {
             className[i].style.color = 'deepskyblue';
         }
+        // list이지만 선택하고자 할때 [0] 과같은 인덱스 사용또한 가능
+        document.getElementsByClassName('front')[0].style.color = 'blue';
+
 
         //list라서 반드시 반복문으로 씀
         const querySelector = document.querySelectorAll('li.serverside');
@@ -45,8 +48,13 @@
             querySelector[i].style.color = 'gold';
         }
 
+        //querySelector -> object
         const querySelectorId = document.querySelector('#dom');
         querySelectorId.style.color = 'green';
+
+        //querySelector -> object
+        const querySelectorId01 = document.querySelectorAll('.front')[1];
+        querySelectorId.style.color = 'blue';
 
     </script>
 
