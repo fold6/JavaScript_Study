@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <script>
+        'use strict'
+        document.addEventListener('DOMContentLoaded', () => {
+            const div = document.getElementById('div'); // id 요소를 가져옴
+            const clearbtn = document.getElementById('clearbtn'); // id 요소를 가져옴
+            const result = document.getElementById('result');
+
+            //click
+            div.addEventListener('click', (e) => { // 'div'로 수정
+                result.innerHTML += '<div>click</div>'; // '+=': 상대값, '=': 절대값
+            });
+            // mousedown
+            div.addEventListener('mousedown', (e) => {
+                result.innerHTML = '<div>mousedown</div>';
+            });
+            //mouseup
+            div.addEventListener('mouseup', (e) => {
+                result.innerHTML = '<div>mouseup</div>';
+            });
+            //mouseover
+            div.addEventListener('mouseover', (e) => {
+                result.innerHTML = '<div>mouseover</div>';
+            });
+            //mouseout
+            div.addEventListener('mouseout', (e) => {
+                result.innerHTML = '<div>mouseout</div>';
+            });
+            //mouseenter
+            div.addEventListener('mouseenter', (e) => {
+                result.innerHTML = '<div>mouseenter</div>';
+            });
+            //mouseleave
+            div.addEventListener('mouseleave', (e) => {
+                result.innerHTML = '<div>mouseleave</div>';
+            });
+
+            //mousemove
+          /*   div.addEventListener('mousemove', (e) => {
+                document.getElementsByClassName('txt').textContent('event.pageX'+','+'event.pageY')
+            }); */
+
+
+            //mousemove
+            div.addEventListener('contextmenu', (e) => {
+                result.innerHTML = '<div>contextmenu</div>';
+            });
+            
+            div.onclick('click', (e) => {
+                result.innerHTML += '<div>click</div>';
+            });
+            
+            //이벤트 표시 삭제
+            clearbtn.addEventListener('click', (e) => {
+                result.innerHTML = ''; // 공백으로 초기화
+            });
+        });
+    </script>
+    <style>
+        #div {
+            background-color: green;
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 이벤트 객체 -->
+    <div id='div'></div>
+
+    <!-- 이벤트 상태 삭제 -->
+    <input id='clearbtn' type='button' value='clear' />
+    
+    <!-- 마우스좌표 -->
+    <p>마우스 좌표는 <span class="txt"></span></p>
+
+    <!-- 이벤트 상태를 표시 -->
+    <div id='result'></div>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <script>
+        'use strict'
+        document.addEventListener('DOMContentLoaded', () => {
+            // 문서 객체 읽어들이고 생성하기
+            const divA = document.querySelector('#first');
+            const divB = document.querySelector('#second');
+            const h1 = document.querySelector('h1');
+            h1.textContent = '이동하는 h1 태그'; // textContent로 수정
+
+            // 함수 실행
+            const toFirst = () => {
+                divA.appendChild(h1);
+                // 두번째 함수 호출
+                setTimeout(toSecond, 1000)
+            }
+            const toSecond = () => {
+                // 세번째 함수 호출
+                divB.appendChild(h1);
+                setTimeout(toFirst, 3000)
+            }
+
+            toFirst(); // 첫번째 함수 호출
+        });
+    </script>
+</head>
+
+<body>
+    <div id="first">
+        <h1>첫번째 div </h1>
+    </div>
+    <hr>
+    <div id="second"> <!-- id 속성 수정 -->
+        <h1>두번째 div </h1>
+    </div>
+</body>
+
+</html>

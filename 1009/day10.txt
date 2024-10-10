@@ -1,0 +1,79 @@
+
+[이벤트]
+1. 인라인 이벤트 헨들러 : html 태그의 속성에 이벤트 속성을 추가하는 방법
+<script>
+    function test() {  //click 이벤트 발생시 처리할 함수 등록
+        console.log("클릭!!");
+    }
+</script>
+<body>
+    <button onclick="test()">버튼</button>
+</body>
+
+
+2.이벤트 헨들러 프로퍼티 : html과 분리하여 스크립트 코드에서 DOM 객체의 프로퍼티를 이용하는 방법
+
+<script>
+  const btn = document.getElementById("btn");
+  btn.onclick = function(){
+    console.log('버튼클릭');
+  }
+</script>
+<body>
+    <button id ="btn">버튼</button>
+</body>
+
+
+3. addEventListener() 메소드;
+addEventListener() 메소드를 이용하여 대상 DOM 요소에 이벤트를 설정하고 해당 이벤트가 발생했을 때 실행될 이벤트 핸들러를 등록함.
+
+<script>
+    const btn = document.getElementById("btn");
+    btn.addEventListener("click", function () { //click 이벤트 발생 시 처리할 함수 등록
+        console.log("버튼 클릭!");
+    });
+</script>
+
+<body>
+    <button id="btn">버튼</button>
+</body>
+
+*2번과 3번 차이점 : 2번은 이벤트 적용, 3번은 이벤트에 대한 권한을 적용
+=> 하나의 객체에 이벤트를 한번 적용하느냐, 여러번 적용하느냐의 차이
+
+[이벤트 종류]
+<마우스 이벤트>
+
+click - 요소에 마우스를 클릭했을 때 이벤트가 발생
+dbclick - 요소에 마우스를 더블클릭했을 때 이벤트가 발생 
+mouseover - 요소에 마우스를 오버했을 때 이벤트가 발생 
+mouseout - 요소에 마우스를 아웃했을 때 이벤트가 발생
+mouseleave - 요소영역에서 마우스 포커스가 아웃했을때 발생 (이거 자주씀)
+mouseenter - 요소영역에서 마우스 포커스가 인 했을대 발생(이거 자주씀)
+mousedown - 요소에 마우스를 눌렀을 때 이벤트가 발생
+mouseup - 요소에 마우스를 떼었을 때 이벤트가 발생
+mousemove - 요소에 마우스를 움직였을 때 이벤트가 발생
+contextmenu - context menu (마우스 오른쪽 버튼)가 나오기 전에 이벤트 발생
+
+<키 이벤트>
+keydown - 키를 눌렀을대 발생
+keyup - 키를 떼었을 때 이벤트가 발생
+keypress - 키를 누른 상태에서 이벤트가 발생
+
+<폼 이벤트>
+focus - 요소에 포커스가 이동되었을 때 이벤트 발생 
+blur - 요소에 포커스가 벗어났을 때 이벤트 발생
+change - 요소에 값이 변경 되었을 때 이벤트 발생 
+submit - submit 버튼을 눌렀을 때 이벤트 발생 
+reset - reset 버튼을 눌렀을 때 이벤트 발생
+select - input이나 textarea 요소 안의 텍스트를 드래그하여 선택했을 때 이벤트 발생 
+
+
+<로드 이벤트(자동으로 실행하는 이벤트,window,html문서)>
+DOMContentLoade -> 문서 읽어지면 발생하는 이벤트
+load - 페이지의 로딩이 완료되었을 때 이벤트 발생(로딩 돼고, 그안에 포함된 파일, 이미지 따위가 로딩이 다 되어야함)
+
+abort - 이미지의 로딩이 중단되었을 때 이벤트 발생
+unload - 페이지가 다른 곳으로 이동될 때 이벤트 발생
+resize - 요소에 사이즈가 변경되었을 때 이벤트 발생 
+scroll - 스크롤바를 움직였을 때 이벤트 발생

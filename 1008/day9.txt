@@ -1,4 +1,3 @@
-
 [노드(node)]
 HTML DOM은 노드라고 불리는 계층적 단위에 정보를 저장합니다. 
 HTML DOM은 노드들을 정의하고 그사이의 관계를 설명해주는 역할을 합니다.
@@ -63,42 +62,3 @@ false면 속성 노드만 복제하고 자식 노드는 복제하지 않음
 - 문서객체.setAttrbute(속성이름, 값) 특정 속성에 값을 지정
 - 문서객체.getAttrbute(속성이름값) 특정 속성에 추출
 
-
-[이벤트]
-1. 인라인 이벤트 헨들러 : html 태그의 속성에 이벤트 속성을 추가하는 방법
-<script>
-    function test() {  //click 이벤트 발생시 처리할 함수 등록
-        console.log("클릭!!");
-    }
-</script>
-<body>
-    <button onclick="test()">버튼</button>
-</body>
-
-
-2.이벤트 헨들러 프로퍼티 : html과 분리하여 스크립트 코드에서 DOM 객체의 프로퍼티를 이용하는 방법
-
-<script>
-  const btn = document.getElementById("btn");
-  btn.onclick = function(){
-
-  }
-</script>
-<body>
-    <button id ="btn">버튼</button>
-</body>
-
-
-3. addEventListener() 메소드;
-addEventListener() 메소드를 이용하여 대상 DOM 요소에 이벤트를 설정하고 해당 이벤트가 발생했을 때 실행될 이벤트 핸들러를 등록함.
-
-<script>
-    const btn = document.getElementById("btn");
-    btn.addEventListener("click", function () { //click 이벤트 발생 시 처리할 함수 등록
-        console.log("버튼 클릭!");
-    });
-</script>
-
-<body>
-    <button id="btn">버튼</button>
-</body>
