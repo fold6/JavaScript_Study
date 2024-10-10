@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <script>
+        'use strict'
+        document.addEventListener('DOMContentLoaded', () => {
+            let counter = 1; // 클릭 횟수가 저장되는 메모리
+            const h1 = document.querySelector('h1'); // 메인 이벤트가 발생하는 객체를 읽음
+
+            h1.addEventListener('click', function() {
+                counter++;
+                h1.textContent = '클릭 횟수: ' + counter; // 변수 문자열 포함
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1>클릭 함수</h1>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    'use strict';
+    document.addEventListener('DOMContentLoaded', () => {
+      let counter = 0;//클릭횟수가 저장되는 메모리
+      let isConnect = false;//이벤트 연결된 상태를 저장하는 메모리
+
+      //객체 읽기
+      const h1 = document.querySelector('h1');//이벤트가 발생하는 객체를 읽기
+      const p = document.querySelector('p');
+      const connectButton = document.querySelector('#connect');
+      const disconnectButton = document.querySelector('#disconnect');
+
+
+      //이벤트가 적용되었을때 counter값을 증가하는 함수
+      const listener = (e) => {//e함수호출시 발생한 이벤트 즉 click가 발생 실행
+        h1.textContent = `클릭 횟수: ${counter++}`;
+      }
+
+      //이벤트가 연결 상태
+      connectButton.addEventListener('click', () => {
+        if (isConnect === false) {
+          h1.addEventListener('click', listener);//이벤트 권한 부여
+          p.textContent = '이벤트 연결 상태: 연결';
+          isConnect = true;//이벤트 연결 해제가 적용되게 상태값을 상대적으로 변경
+        }
+      });
+      //이벤트가 연결 해제
+      disconnectButton.addEventListener('click', () => {
+        if (isConnect === true) {
+          h1.removeEventListener('click', listener);//이벤트 권한을 해제
+          p.textContent = '이벤트 연결 상태: 해제';
+        }
+      })
+    });
+
+  </script>
+  <style>
+    h1 {
+      /* 클릭을 여러 번 했을 때
+         글자가 선택되는 것을 막기 위한 스타일 */
+      user-select: none;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>클릭 횟수: 0</h1>
+  <button id="connect">이벤트 연결</button>
+  <button id="disconnect">이벤트 제거</button>
+  <p>이벤트 연결 상태: 해제</p>
+</body>
+
+</html>
