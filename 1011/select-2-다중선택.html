@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <script>
+        'use strict'
+        document.addEventListener('DOMContentLoaded', () => {
+            const select = document.querySelector('select');
+            const p = document.querySelector('p');
+
+            select.addEventListener('change', (e) => {
+                const options = e.currentTarget.options; //sellect문 option을 활용
+                const list = []; //다중 선택이라서 배열로 선언하고 저장
+
+                for (const option of options) {
+                    if (option.selected) { //선택된 옵션이라면 참
+                        list.push(option.textContent); //선택된 옵션태그안에 글자 배열에 저장
+                    }
+                }
+                p.textContent = `선택: ${list.join(',')}` //배열을 가지고 옴
+            });
+
+        });
+    </script>
+
+</head>
+
+<body>
+    <select multiple>
+        <option>떡볶이</option>
+        <option>순대</option>
+        <option>오뎅</option>
+        <option>튀김</option>
+    </select>
+    <p>선택 : 떡볶이</p>
+
+</body>
+
+</html>

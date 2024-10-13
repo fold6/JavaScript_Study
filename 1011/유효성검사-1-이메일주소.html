@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <script>
+        'use strict'
+        document.addEventListener('DOMContentLoaded', () => {
+            const input = document.querySelector('input');
+            const p = document.querySelector('p');
+
+            // 입력된 데이터의 유효성겁사
+            const isEmail = (value) => {
+                // 골뱅이 와 . 이 있는지 검사
+                return (value.indexOf('@') > 1) && (value.split('@')[1].indexOf('.') > 1)
+                //return 된값 : 위조건이 참이면 아래 if문에 ture로, 아니면 아래 if문의 false로 감
+                //조건 : '@'가 이메일 주소의 두 번째 문자 이후에 있고, '@' 뒤에 '.'이 두 번째 위치 이후에 있는지 확인
+
+            }
+
+
+            // 키보드 이벤트를 활용해서 이메일 형식분석
+            input.addEventListener('keyup', (event) => { 
+                // 입력된 값 가지고옴 currentTarget는 현재 이벤트 발생 객체(input)
+                const value = event.currentTarget.value; //인풋테그 에 이벤트를 주고 인풋태그의 값을 가져옴
+                if (isEmail(value)) {//true 및 false값 온다
+                    p.style.color = 'green'
+                    p.textContent = `이메일 형식입니다: ${value}` //입력된 출력
+                } else {
+                    p.style.color = 'red'
+                    p.textContent = `이메일 형식이 아닙니다: ${value}`
+                }
+            })
+
+        });
+    </script>
+
+
+</head>
+
+<body>
+    <input type="text">
+    <p></p>
+</body>
+
+</html>

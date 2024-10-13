@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    'use strict';
+    document.addEventListener('DOMContentLoaded', () => {
+      let 현재값
+      let 변환상수 = 10
+
+      const select = document.querySelector('select');
+      const input = document.querySelector('input');
+      const span = document.querySelector('span');
+
+      //입력된 값을 연산
+      const calculate = () => {
+        span.textContent = (현재값 * 변환상수).toFixed(2);//소수점 두번째 제한
+      }
+
+      select.addEventListener('change', (e) => {
+        const options = e.currentTarget.options
+        const index = e.currentTarget.options.selectedIndex
+        변환상수 = Number(options[index].value);
+        calculate();//계산하는 함수 호출
+      });
+
+      //값을 입력
+      input.addEventListener('keyup', (e) => {
+        현재값 = Number(e.currentTarget.value);
+        calculate();//계산하는 함수 호출
+      })
+
+    });
+  </script>
+</head>
+
+<body>
+  <input type="text">cm =
+  <span></span>
+  <select>
+    <option value="10">mm</option>
+    <option value="0.01">m</option>
+    <option value="0.393701">inch</option>
+  </select>
+</body>
+
+</html>

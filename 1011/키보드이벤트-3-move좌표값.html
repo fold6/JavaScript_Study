@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <script>
+        'use strict'
+        document.addEventListener('DOMContentLoaded', () => {
+            const cursor1 = document.querySelector(".cursor1");
+            const result = document.querySelector('.result');
+
+            // addEventListener로 mousemove를 추가
+            document.addEventListener('mousemove', function (e) {
+                let x = e.pageX; //가로값
+                let y = e.pageY; //세로값
+                cursor1.style.cssText = "left:" + x + "px;" + "top:" + y + "px;" //위치를 style로 적용한다.
+
+                result.innerHTML =
+                    `<p><strong>pageX,Y</strong>(${e.pageX},${e.pageY}) 페이지(스크롤 포함 기준)</p>`
+                result.innerHTML +=
+                    `<p><strong>offsetX,Y</strong>(${e.offsetX},${e.offsetY}) 페이지(스크롤 포함 기준)</p>`
+            });
+        });
+    </script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            cursor: pointer;
+            /*전체 화면에서 포인터 적용*/
+        }
+
+        .cursor1 {
+            position: fixed;
+            left: 0;
+            top: 0;
+            pointer-events: none;
+            /*요소가 포인터 이벤트의 대상이 되지 않는다.*/
+            width: 50px;
+            height: 50px;
+            background-color: #E07D9B;
+            opacity: .3;
+            border: 1px solid #E07D9B;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="content">
+        <h1>마우스 따라다니는 효과</h1>
+        <!-- 화면 좌표를 출력하는 객체 -->
+        <div class="result"></div>
+    </div>
+
+    <!-- 움직이는 객체 -->
+    <div class="cursor1"></div>
+</body>
+
+</html>

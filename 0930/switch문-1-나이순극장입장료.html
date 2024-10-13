@@ -14,22 +14,21 @@
     <script>
         'use strict';
         let input = prompt('아동, 청소년, 성인 중 선택하세요');
-
         switch (input) {
             case "아동":
-                input += ":입장료 무료";
+            case "kid":
+                input += ":입장료 무료"
                 break;
             case "청소년":
-                input += ":입장료 2000원";
+                input += ":입장료 2000원"
                 break;
             case "성인":
-                input += ":입장료 5000원";
+                input += ":입장료 5000원"
                 break;
             default:
-                alert('입력값을 확인하세요');
-                input = "입력값을 확인하세요";
+                alert('입력값 확인해주세요')
+                input = "입력값 확인해주세요";
         }
-
         document.write(input);
     </script>
 </body>
