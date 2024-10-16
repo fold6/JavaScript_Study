@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    function test(object) {
+      console.log(object.a + object.b)
+    }
+
+    test({});
+    /*
+        일반적인 프로그래밍 언어라면 object 객체에 a속성과b속성이 없으므로 예외를 발생할 것이고
+        존재하지 않는 것을 더하므로 object.a + object.b를 할때도 예외를 발생합니다
+        그러면 사용자는 자신이 잘못했다는 것을 인지하고 수정할 수 있습니다
+        하지만 자바스크립트는 object.a가 underfined로 나오며 object.b도 underfined로 나옵니다
+        여기서 underfined + underfined를 화면 NaN이 나옵니다
+        즉 아무 오류없이 코드가 정상적으로 실행
+        그렇기 때문에 사용자에게 함수를 잘못 사용했다는 것을 강제로 인지시켜줄 필요가 있습니다.
+      */
+  </script>
+</head>
+
+<body>
+
+</body>
+
+
+</html>

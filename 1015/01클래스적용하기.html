@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      margin-top: 35px;
+    }
+
+    .ball {
+      position: absolute;
+      left: 40px;
+      top: 120px;
+      width: 30px;
+      height: 30px;
+      background-color: #8ac007;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .effect {
+      transform: scale(2);
+    }
+
+    .status {
+      margin-top: 110px;
+    }
+  </style>
+  <script>
+    window.addEventListener('load', () => {
+      const container = document.getElementsByClassName('container')[0];
+      const ball = container.children[0];
+
+      ball.addEventListener('dblclick', (e) => {
+        e.target.classList.toggle('effect');
+        //현재 클래스가 적용 상태이면 클래스 미적용, 클래스가 미적용이면 적용 상태 변환 메소드
+      });
+      ball.addEventListener("mouseover", (e) => {
+        e.target.classList.add('effect'); //클래스 적용
+      })
+      ball.addEventListener("mouseout", (e) => {
+        e.target.classList.remove('effect');//클래스 미적용
+      })
+
+    })
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="ball"></div>
+  </div>
+
+</body>
+
+</html>

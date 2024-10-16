@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    try {
+      willExcept.byeBye()
+      console.log("try 구문의 마지막 줄")
+    } catch (exception) {
+      console.log("catch 구문의 마지막 줄")
+    } finally {
+      console.log("finally 구문의 마지막 줄") //무조건작동
+    }
+
+    /* 
+    try 구문 안에서 예외가 발생하면 catch 구문에서 처리하고
+    finally 구문은 예외 발생 여부와 상관없이 실행해야 하는 작업
+      */
+  </script>
+</head>
+
+<body>
+
+</body>
+
+
+</html>

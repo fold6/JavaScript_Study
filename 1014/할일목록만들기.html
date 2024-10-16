@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    'use strict';
+    document.addEventListener('DOMContentLoaded', () => {
+      // 문서 객체를 가져옵니다.
+      const input = document.querySelector('#todo');//추가할 할일항목 입력
+      const todoList = document.querySelector('#todo-list');//추가된 항목 보이는 부분
+      const addButton = document.querySelector('#add-button');//추가 버튼
+
+      // 변수를 선언합니다.
+      let keyCount = 0
+
+      //함수 선언
+      const addTodo = () => {
+        // 입력 양식에 내용이 없으면 추가하지 않습니다
+        if (input.value.trim() === '') {
+          alert('할 일을 입력해주세요');
+          return;
+        }
+
+
+        //문서객체 생성 설정 <div><input>텍스트<button></button></div>
+        const item = document.createElement('div');
+        const checkbox = document.createElement('input');
+        const text = document.createElement('span');
+        const button = document.createElement('button');
+
+        //문서 객체를 식별할 키를 생성->인덱스 생성
+        const key = keyCount;//0
+        keyCount += 1
+
+        // 객체를 조작하고 추가
+        item.setAttribute('data-key', key);
+        item.appendChild(checkbox);
+        item.appendChild(text);
+        item.appendChild(button);
+        todoList.appendChild(item);
+
+
+        // checkbox 객체를 조작
+        checkbox.type = 'checkbox'
+        checkbox.addEventListener('change', (e) => {
+          item.style.textDecoration = e.target.checked ? 'line-through' : ''
+        });
+
+        // text 객체를 조작
+        text.textContent = input.value;
+
+
+        // 추가된 문서 객체  button 객체를 조작
+        button.textContent = '제거하기'
+        //삭제
+        button.addEventListener('click', () => {
+          //삭제하는 함수
+          removeTodo(key);
+        });
+
+        // 입력 양식의 내용을 비웁니다.
+        input.value = '';
+      }
+
+      //리스트 삭제 함수
+      const removeTodo = (key) => {
+        // 식별 키로 문서 객체를 제거
+        const item = document.querySelector(`[data-key = "${key}"]`);
+        todoList.removeChild(item);
+      }
+
+
+
+      //이벤트 발생
+      addButton.addEventListener('click', addTodo);
+
+      input.addEventListener('keyup', (e) => {
+        const ENTER = 13;
+        if (e.keyCode === ENTER) {
+          addTodo();
+        }
+        //입력양식에서 ENTER키를 누르면 바로 실행문 호출
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <h1>할 일 목록</h1>
+  <input id="todo">
+  <button id="add-button">추가하기</button>
+  <div id="todo-list">
+
+
+  </div>
+</body>
+
+</html>

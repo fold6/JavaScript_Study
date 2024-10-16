@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      margin-top: 35px; /* 컨테이너 상단 여백 */
+    }
+
+    .ball {
+      position: absolute; /* 위치를 절대값으로 설정 (화면의 좌표로 이동 제어 가능) */
+      left: 50px; /* 초기 x좌표 */
+      top: 150px; /* 초기 y좌표 */
+      width: 30px;
+      height: 30px;
+      background-color: #8ac007; /* 공의 색상 */
+      border-radius: 50%; /* 둥근 공 모양 */
+      cursor: pointer; /* 마우스를 올리면 포인터 커서로 변경 */
+      transition: all 0.2s ease-in-out; /* 공이 부드럽게 이동하도록 트랜지션 적용 */
+    }
+
+    .effect {
+      transform: scale(2); /* 클릭 시 공을 2배로 확대하는 효과 */
+    }
+
+    .status {
+      margin-top: 110px; /* 상태 영역의 상단 여백 */
+    }
+  </style>
+  <script>
+    // 페이지 로드 후 스크립트 실행
+    window.addEventListener('load', () => {
+      const container = document.getElementsByClassName('container')[0]; 
+      // 'container' 클래스를 가진 첫 번째 요소 가져오기
+
+      let buttonList = []; // 버튼 요소들을 담을 배열
+      let ball; // 공(div) 요소를 담을 변수
+
+      // 반복문을 통해 container 내부의 자식 요소들을 탐색
+      for (let i = 0; i < container.children.length; i++) { // 자식 요소 개수만큼 반복
+        if (container.children[i].tagName == "BUTTON") { 
+          // 자식 요소가 <button>이면 배열에 추가
+          buttonList.push(container.children[i]);
+        } else if (container.children[i].tagName == "DIV") { 
+          // 자식 요소가 <div>이면 공 변수에 저장
+          ball = container.children[i];
+        }
+      }
+      // 이제 buttonList에는 버튼 요소들이, ball에는 공 요소가 담겨 있음
+
+      let idName = ""; // 클릭된 버튼의 id 값을 저장할 변수
+      let x = 50; // 공의 초기 x좌표
+      let y = 150; // 공의 초기 y좌표
+
+      // 버튼 리스트에 각 버튼마다 클릭 이벤트 추가
+      for (let i = 0; i < buttonList.length; i++) { 
+        buttonList[i].addEventListener('click', (e) => { 
+          // 클릭된 버튼의 id값을 가져옴
+          // console.log(idName);
+          idName = e.target.id;
+
+          // 버튼의 id에 따라 공의 좌표를 이동시킴
+          switch (idName) {
+            case "left":
+              x = x - 20; // 왼쪽으로 20px 이동
+              break;
+            case "right":
+              x = x + 20; // 오른쪽으로 20px 이동
+              break;
+            case "top":
+              y = y - 20; // 위로 20px 이동
+              break;
+            case "bottom":
+              y = y + 20; // 아래로 20px 이동
+              break;
+            default:
+              break;
+          }
+
+          // 계산된 좌표를 공에 반영해 이동
+          ball.style.left = x + "px"; // 새로운 x좌표 설정
+          ball.style.top = y + "px"; // 새로운 y좌표 설정
+        });
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <!-- 버튼 4개 정의 -->
+    <button id="left">left</button> <!-- 왼쪽 이동 -->
+    <button id="right">right</button> <!-- 오른쪽 이동 -->
+    <button id="top">top</button> <!-- 위로 이동 -->
+    <button id="bottom">bottom</button> <!-- 아래로 이동 --><br>
+
+    <!-- 움직이는 공 정의 -->
+    <div class="ball"></div>
+  </div>
+</body>
+
+</html>

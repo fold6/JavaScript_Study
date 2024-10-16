@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    // 자료를 생성합니다.
+    const data = [
+      {
+        name: "혼자 공부하는 자바스크립트",
+        price: 18000,
+        publisher: "한빛미디어",
+      },
+      {
+        name: "HTML5 웹 프로그래밍 입문",
+        price: 26000,
+        publisher: "한빛아카데미",
+      }
+    ];
+
+    // 자료를 JSON으로 변환합니다. stringify(데이터명)
+    console.log(JSON.stringify(data));//순수하게 객체를 순수하게JSON 변환
+    console.log(JSON.stringify(data, null, 2));//공백,2칸 -> 2칸들여쓰기 ->보기좋게.
+
+    
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
