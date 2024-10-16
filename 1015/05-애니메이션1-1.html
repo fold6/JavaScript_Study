@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    button {
+      padding: 5px 15px;
+      background-color: #444;
+      color: white;
+      transition: all 0.5s;
+    }
+
+    button:hover {
+      background-color: #666;
+    }
+
+    .container {
+      margin-top: 35px;
+    }
+
+    body {
+      background-color: #dfdfdf;
+      margin: 20px;
+      padding: 20px;
+    }
+
+    ul,
+    li {
+      list-style: none;
+    }
+
+    .ball {
+      position: absolute;
+      left: 40px;
+      top: 180px;
+      width: 30px;
+      height: 30px;
+      background-color: green;
+      border-radius: 50%;
+    }
+  </style>
+
+  <script>
+    window.addEventListener('load', () => {
+      const queue = document.querySelector('#queue');
+      const ball = document.querySelector('.ball');
+      let x = ball.offsetLeft; // ball자신의 왼쪽값
+      let targetX = 500;
+
+      queue.addEventListener('click', function () {
+        animate(ball, x, targetX) // 타겟x 로 변수선언하면 한번에 다른것들도 위치를 바꿀수잇어서 씀
+      })
+
+      function animate(target, startX, targetX) {
+        const timer = setInterval(
+          function () {
+            if (startX < targetX) { // 40 < 500  480 < 500 -> 500 < 
+              startX = startX + 10; // 50 90
+            } else {
+              startX = targetX;
+              clearInterval(timer)//500 == startX 실행중지
+            }
+            target.style.left = startX + "px"; // 스타일시트 position left 활용으로 이동
+          }, 10)
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <button id="queue">animate queue</button>
+    <div class="ball"></div>
+  </div>
+</body>
+
+</html>

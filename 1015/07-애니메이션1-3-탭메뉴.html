@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .container {
+      margin-top: 35px;
+      width: 440px;
+    }
+
+    ul,
+    li {
+      list-style: none;
+    }
+
+    nav ul {
+      margin: 16px 0 16px 0;
+      padding: 8px 0;
+      text-align: left;
+      font-weight: 500;
+      border-bottom: 1px solid #d4d4d4;
+    }
+
+    nav ul li {
+      display: inline;
+    }
+
+    nav ul li a {
+      padding: 10px 20px 10px;
+      text-decoration: none;
+      font-size: 12px;
+      background-color: #f1f1f1;
+      color: #333;
+      border: 1px solid #d4d4d4;
+      border-bottom: none;
+      transition: all .5s ease-in-out;
+    }
+
+    nav ul li.on a {
+      background-color: #8ac007;
+      color: #fff;
+      border-color: #8ac007;
+    }
+
+    .description.active{
+      display: block;
+    }
+
+  </style>
+
+  <script>
+    window.addEventListener('load', () => {
+
+    });
+  </script>
+
+</head>
+
+<body>
+  <div class="container">
+    <nav>
+      <ul>
+        <li class="tab1"><a href="">HTML</a></li>
+        <li class="tab2"><a href="">CSS</a></li>
+        <li class="tab3"><a href="">JavaScript</a></li>
+        <li class="tab4"><a href="">JQuery</a></li>
+      </ul>
+    </nav>
+    <div class="description HTML">subject : HTML</div>
+    <div class="description CSS">subject : CSS</div>
+    <div class="description JavaScript">subject : JavaScript</div>
+    <div class="description JQuery">subject : JQuery</div>
+  </div>
+</body>
+
+</html>

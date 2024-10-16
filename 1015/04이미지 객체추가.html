@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    button {
+      padding: 5px 15px;
+      background-color: #444;
+      color: white;
+      transition: all 0.5s;
+    }
+
+    button:hover {
+      background-color: #666;
+    }
+
+    .container {
+      margin-top: 10px;
+    }
+
+    body {
+      background-color: #dfdfdf;
+      margin: 20px;
+      padding: 20px;
+    }
+
+    ul,
+    li {
+      list-style: none;
+    }
+
+    .gallery {
+      margin-top: 60px;
+    }
+
+    .gallery img {
+      width: 200px;
+      margin-right: 10px;
+    }
+  </style>
+
+  <script>
+    window.addEventListener('load', () => {
+      const prependBtn = document.getElementById('prepend');
+      const appendBtn = document.getElementById('append'); // 수정된 부분
+      const gallery = document.querySelector('.gallery');
+
+      prependBtn.addEventListener('click', () => {
+        const lastChild = gallery.lastElementChild;
+
+        // src와 alt 속성 읽기
+        let preSrc = lastChild.getAttribute('src'); // getAtti → getAttribute
+        let preAlt = lastChild.getAttribute('alt'); // getAtti → getAttribute
+        console.log("src: " + preSrc + ", alt: " + preAlt);
+
+        // 노드 삭제
+        gallery.removeChild(lastChild);
+
+        // 새로운 img 노드 생성 및 속성 설정
+        const newNode = document.createElement('img');
+        newNode.setAttribute('src', preSrc); // 공백 제거
+        newNode.setAttribute('alt', preAlt); // 공백 제거
+
+        // 새 노드를 첫 번째 자식으로 추가
+        gallery.insertBefore(newNode, gallery.firstElementChild);
+      });
+
+      appendBtn.addEventListener('click', () => {
+        const firstChild = gallery.firstElementChild;
+        
+        // src와 alt 속성 읽기
+        let preSrc = firstChild.getAttribute('src');
+        let preAlt = firstChild.getAttribute('alt');
+        console.log("src: " + preSrc + ", alt: " + preAlt);
+
+        // 노드 삭제
+        gallery.removeChild(firstChild);
+
+        // 노드생성
+        const newNode = document.createElement('img');
+        newNode.setAttribute('src', preSrc);
+        newNode.setAttribute('alt', preAlt);
+
+        // 노드추가
+        // newNode = firstChild.cloneNode;
+        gallery.appendChild(newNode);
+
+
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <!-- 버튼 2개 정의 -->
+    <button id="prepend" title="prepend">prepend</button>
+    <button id="append" title="append">append</button>
+    <div class="gallery">
+      <img src="./images/slide1.jpg" alt="Slide 1">
+      <img src="./images/slide2.jpg" alt="Slide 2">
+      <img src="./images/slide3.jpg" alt="Slide 3">
+      <img src="./images/slide4.jpg" alt="Slide 4">
+    </div>
+  </div>
+</body>
+
+</html>
