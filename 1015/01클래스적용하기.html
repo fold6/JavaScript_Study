@@ -29,6 +29,20 @@
     .status {
       margin-top: 110px;
     }
+
+    .box {
+      position: absolute;
+      top: 200px;
+      left: 40px;
+      width: 100px;
+      height: 100px;
+      background-color: #8ac007;
+      transition: all .5s ease-in-out;
+    }
+
+    .box:hover {
+      width: 500px;
+    }
   </style>
   <script>
     window.addEventListener('load', () => {
@@ -41,18 +55,19 @@
       });
       ball.addEventListener("mouseover", (e) => {
         e.target.classList.add('effect'); //클래스 적용
-      })
+      });
       ball.addEventListener("mouseout", (e) => {
-        e.target.classList.remove('effect');//클래스 미적용
-      })
+        e.target.classList.remove('effect'); //클래스 미적용
+      });
 
-    })
+    });
   </script>
 </head>
 
 <body>
   <div class="container">
-    <div class="ball"></div>
+    <div class="ball effect"></div>
+    <div class="box"></div>
   </div>
 
 </body>
