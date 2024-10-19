@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul,
+    li {
+      list-style: none;
+    }
+
+
+    .container {
+      margin-top: 35px;
+      width: 440px;
+    }
+
+    nav ul {
+      margin: 16px 0 16px 0;
+      padding: 8px 0;
+      text-align: left;
+      font-weight: 500;
+      border-bottom: 1px solid #d4d4d4;
+    }
+
+    nav ul li {
+      display: inline;
+    }
+
+    nav ul li a {
+      padding: 10px 20px 10px;
+      text-decoration: none;
+      font-size: 12px;
+      background-color: #f1f1f1;
+      color: #333;
+      border: 1px solid #d4d4d4;
+      border-bottom: none;
+      transition: all 0.4s;
+    }
+
+    nav ul li.on a {
+      background-color: #8ac007;
+      color: #fff;
+      border-color: #8ac007
+    }
+
+    .description {
+      display: none;
+      margin: 30px 0;
+      padding: 30px 0;
+      font-size: 13px;
+      color: #333;
+      border-bottom: 4px solid #d4d4d4;
+    }
+
+    .description.active {
+      display: block;
+    }
+  </style>
+  <script>
+    window.addEventListener('load', () => { // 페이지가 모두 로드된 후 실행
+      let n = 0; // 현재 활성화된 탭의 인덱스를 저장하는 변수 초기화
+
+      const container = document.getElementsByClassName('container')[0];
+      // 첫 번째 .container 요소 선택 (배열에서 첫 번째 요소를 가져옴)
+
+      let infoArray = []; // description 요소들을 저장할 배열
+      let nav; // <nav> 태그를 저장할 변수
+
+      // container의 자식 요소를 순회
+      for (let i = 0; i < container.children.length; i++) {
+        if (container.children[i].tagName == "NAV") {
+          nav = container.children[i]; // NAV 태그를 nav 변수에 저장
+        } else {
+          infoArray.push(container.children[i]);
+          // NAV가 아닌 요소(DIV)를 infoArray 배열에 추가
+        }
+      }
+
+      const navLi = nav.children[0].children;
+      // <nav> 안에 있는 <ul>의 모든 <li> 요소 선택
+
+      console.log(navLi); // 선택된 <li> 요소 배열을 콘솔에 출력
+      console.log(infoArray); // 선택된 description(DIV) 배열을 콘솔에 출력
+
+      // 초기 설정: 첫 번째 <li>와 첫 번째 description에 클래스 추가
+      navLi[n].classList.add('on'); // 첫 번째 <li>에 'on' 클래스 추가
+      infoArray[n].classList.add('active'); // 첫 번째 description에 'active' 클래스 추가
+
+      // <li> 요소에 클릭 이벤트를 설정
+      for (let i = 0; i < navLi.length; i++) {
+        navLi[i].index = i; // 각 <li> 요소에 인덱스 저장 (0, 1, 2, 3 등)
+        navLi[i].addEventListener('click', (e) => {
+          // <li>가 클릭될 때마다 이벤트 핸들러 실행
+          e.preventDefault(); // <a> 태그의 기본 동작(페이지 이동) 방지
+
+          n = e.currentTarget.index; // 클릭된 <li>의 인덱스를 n에 저장
+
+          // 모든 <li>와 description 요소 순회하며 스타일 적용
+          for (let j = 0; j < navLi.length; j++) {
+            if (j == i) { // 클릭된 인덱스와 현재 인덱스가 같을 때
+              navLi[j].classList.add('on'); // 해당 <li>에 'on' 클래스 추가
+              infoArray[j].classList.add('active'); // 해당 description에 'active' 클래스 추가
+            } else { // 클릭된 인덱스가 아닐 때
+              navLi[j].classList.remove('on'); // 'on' 클래스 제거
+              infoArray[j].classList.remove('active'); // 'active' 클래스 제거
+            }
+          }
+        });
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <nav>
+      <ul>
+        <li class="tab1"><a href="">HTML</a></li>
+        <li class="tab2"><a href="">CSS</a></li>
+        <li class="tab3"><a href="">JavaScript</a></li>
+        <li class="tab4"><a href="">jQuery</a></li>
+      </ul>
+    </nav>
+    <div class="description HTML">subject : HTML</div>
+    <div class="description CSS">subject : CSS</div>
+    <div class="description JavaScript">subject : JavaScript</div>
+    <div class="description jQuery">subject : jQuery</div>
+  </div>
+</body>
+
+</html>

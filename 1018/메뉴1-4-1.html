@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {}
+
+    ul,
+    li {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .header {
+      width: 100%;
+      height: 120px;
+      background-color: aqua;
+      position: relative;
+      padding-top: 40px;
+      box-sizing: border-box;
+    }
+
+    .header nav {
+      margin: 0 auto;
+      width: 1000px;
+      height: 80px;
+      border: 1px solid #ccc;
+    }
+
+    .header nav ul {
+      width: 100%;
+      height: 80px;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+    }
+
+    .header nav ul li {
+      width: 20%;
+      text-align: center;
+      line-height: 80px;
+    }
+
+    .header nav ul a {
+      display: block;
+      width: 100%;
+      height: 80px;
+      background-color: #f1f1f1;
+    }
+
+    .header nav ul a:hover {
+      background-color: #ccc;
+    }
+
+    .header .subarea {
+      position: absolute;
+      top: 120px;
+      left: 0px;
+      z-index: 100;
+      width: 100%;
+      height: 0px;
+      overflow: hidden;
+      background-color: aquamarine;
+      transition: all 0.5s;
+    }
+
+    header .subarea h2 {
+      font-size: 50px;
+      text-align: center;
+    }
+
+    .header .subarea.over {
+      height: 300px;
+
+    }
+  </style>
+  <script>
+    'use strict';
+    window.addEventListener('load', () => {
+      const nav = document.getElementById('nav');
+      const depth1Li = nav.children[0].children; //nav > ul > li
+      const subarea = document.getElementsByClassName('subarea')[0];
+
+      for (let i = 0; i < depth1Li.length; i++) {
+        depth1Li[i].index = i;
+
+        depth1Li[i].addEventListener('mouseenter', () => {
+          subarea.classList.add('over');
+        })
+        depth1Li[i].addEventListener('mouseleave', () => {
+          subarea.classList.remove('over');
+        })
+
+      }
+
+
+
+
+    })
+  </script>
+</head>
+
+<body>
+  <header class="header">
+    <nav id="nav">
+      <ul>
+        <li><a href="">main1</a></li>
+        <li><a href="">main2</a></li>
+        <li><a href="">main3</a></li>
+        <li><a href="">main4</a></li>
+        <li><a href="">main5</a></li>
+      </ul>
+    </nav>
+    <div class="subarea">
+      <h2>메뉴</h2>
+    </div>
+  </header>
+</body>
+
+</html>

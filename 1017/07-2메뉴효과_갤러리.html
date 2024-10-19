@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      padding: 20px;
+    }
+
+    ul,
+    li {
+      list-style: none;
+    }
+
+    .container {
+      margin-top: 35px;
+      width: 440px;
+    }
+
+    .controller {
+      padding-top: 20px;
+    }
+
+    .controller li {
+      display: inline-block;
+      margin-left: 8px;
+    }
+
+    .controller li:first-child {
+      margin-left: 0px;
+    }
+
+    .controller li a {
+      display: block;
+      width: 20px;
+      height: 20px;
+      background-color: #ccc;
+      border-radius: 20px;
+      transition: all 0.3s;
+    }
+
+    .controller li.on a {
+      width: 50px;
+      background-color: #8ac007;
+    }
+
+    .picture {
+      position: relative;
+      margin-top: 30px;
+      width: 400px;
+      height: 400px;
+      overflow: hidden;
+    }
+
+    .picture ul {
+      position: absolute;
+      left: 0;
+      top: 0;
+      margin: 0;
+      padding: 0;
+      width: 2400px;
+      transition: left 0.4s;
+    }
+
+    .picture li {
+      float: left;
+      width: 400px;
+      height: 400px;
+    }
+
+    .picture img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+  <script>
+    window.addEventListener('load', () => {
+      const container = document.getElementsByClassName('container')[0]; // div.container
+      const controller = container.children[0]; //div.container > ul.controlle
+      const picture = document.getElementsByClassName("picture")[0];
+      const pictureUl = picture.children[0]; //div.picture > ul
+      const liList = controller.children; //div.container > ul.controlle > li
+      let n = 0; //인덱스값
+      let targetx = 0;//이동지점
+
+      for (let i = 0; i < liList.length; i++) {//li태그 이벤트를 반복하는 문장
+        liList[i].index = i;//리스트의 인덱스를 인자로 지정
+        liList[i].addEventListener('click', (e) => {
+          e.preventDefault();//a태그 이벤트 상실
+          n = e.currentTarget.index;//0
+
+          targetx = n * 400 * (-1);//이미지가 이동할 거리
+          pictureUl.style.left = targetx + "px";
+
+          for (var j = 0; j < liList.length; j++) {//li에 인덱스 동일한 li는 클래스 적용 그외는 미적용
+            if (j == n) {
+              liList[j].classList.add("on");
+            }
+            else {
+              liList[j].classList.remove("on");
+            }
+          }
+        })
+      }
+
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <ul class="controller">
+      <li class="on"><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+    <div class="picture">
+      <ul>
+        <li><img src="images/work1.jpg" alt=""></li>
+        <li><img src="images/work2.jpg" alt=""></li>
+        <li><img src="images/work3.jpg" alt=""></li>
+        <li><img src="images/work4.jpg" alt=""></li>
+        <li><img src="images/work5.jpg" alt=""></li>
+        <li><img src="images/work6.jpg" alt=""></li>
+      </ul>
+    </div>
+  </div>
+  </div>
+</body>
+
+</html>

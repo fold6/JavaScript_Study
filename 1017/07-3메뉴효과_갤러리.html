@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      padding: 20px;
+    }
+
+    ul,
+    li {
+      list-style: none;
+    }
+
+    .container {
+      margin-top: 35px;
+      width: 440px;
+    }
+
+    .controller {
+      padding-top: 20px;
+    }
+
+    .controller li {
+      display: inline-block;
+      margin-left: 8px;
+    }
+
+    .controller li:first-child {
+      margin-left: 0px;
+    }
+
+    .controller li a {
+      display: block;
+      width: 20px;
+      height: 20px;
+      background-color: #ccc;
+      border-radius: 20px;
+      transition: all 0.3s;
+    }
+
+    .controller li.on a {
+      width: 50px;
+      background-color: #8ac007;
+    }
+
+    .picture {
+      position: relative;
+      margin-top: 30px;
+      width: 400px;
+      height: 400px;
+      border: 1px solid #ccc;
+    }
+
+    .picture ul {
+      margin: 0;
+      padding: 0;
+      width: 400px;
+      transition: left 0.4s;
+    }
+
+    .picture li {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 400px;
+      height: 400px;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .picture li.active {
+      opacity: 1;
+    }
+
+    .picture img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+  <script>
+    window.addEventListener('load', () => { // 페이지가 모두 로드된 후 실행
+      const container = document.getElementsByClassName('container')[0];
+      // 첫 번째 .container 요소 선택
+
+      const controller = container.children[0];
+      // container 내부의 첫 번째 자식 요소 (ul.controller) 선택
+
+      const picture = document.getElementsByClassName("picture")[0];
+      // 첫 번째 .picture 요소 선택
+
+      const pictureUl = picture.children[0];
+      // picture 내부의 첫 번째 ul 요소 선택
+
+      const pictureLi = pictureUl.children;
+      // ul 내부의 모든 li 요소 선택 (각 이미지 요소)
+
+      const liList = controller.children;
+      // controller 내부의 모든 li 요소 선택 (컨트롤 버튼)
+
+      let n = 0; // 현재 선택된 인덱스를 저장할 변수 초기화
+
+      // 각 li에 클릭 이벤트를 설정
+      for (let i = 0; i < liList.length; i++) {
+        liList[i].index = i; // 각 li에 인덱스 번호를 저장
+
+        liList[i].addEventListener('click', (e) => {
+          // li 클릭 시 실행되는 이벤트 핸들러
+          e.preventDefault(); // <a> 태그의 기본 동작(페이지 이동) 방지
+
+          n = e.currentTarget.index;
+          // 클릭된 li의 인덱스를 n에 저장
+
+          // 모든 li와 이미지에 대해 스타일 적용 및 제거
+          for (let j = 0; j < liList.length; j++) {
+            if (j == n) {
+              // 클릭된 인덱스와 동일할 경우
+              liList[j].classList.add("on"); // 해당 li에 'on' 클래스 추가
+              pictureLi[j].classList.add('active'); // 해당 이미지에 'active' 클래스 추가
+            } else {
+              // 클릭된 인덱스가 아닐 경우
+              liList[j].classList.remove("on"); // 'on' 클래스 제거
+              pictureLi[j].classList.remove('active'); // 'active' 클래스 제거
+            }
+          }
+        });
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <ul class="controller">
+      <li class="on"><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+    <div class="picture">
+      <ul>
+        <li class="active"><img src="images/work1.jpg" alt=""></li>
+        <li><img src="images/work2.jpg" alt=""></li>
+        <li><img src="images/work3.jpg" alt=""></li>
+        <li><img src="images/work4.jpg" alt=""></li>
+        <li><img src="images/work5.jpg" alt=""></li>
+        <li><img src="images/work6.jpg" alt=""></li>
+      </ul>
+    </div>
+  </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul,
+    li {
+      list-style: none;
+    }
+
+    .container {
+      margin-top: 35px;
+      width: 440px;
+    }
+
+    .controller {
+      padding-top: 20px;
+    }
+
+    .controller li {
+      display: inline-block;
+      margin-left: 8px;
+    }
+
+    .controller li:first-child {
+      margin-left: 0px;
+    }
+
+    .controller li a {
+      display: block;
+      width: 20px;
+      height: 20px;
+      background-color: #ccc;
+      border-radius: 20px;
+      transition: all 0.3s;
+    }
+
+    .controller li.on a {
+      width: 50px;
+      background-color: #8ac007;
+    }
+  </style>
+  <script>
+    window.addEventListener('load', () => { // 페이지가 모두 로드된 후 이벤트 핸들러 실행
+      const container = document.getElementsByClassName('container')[0]; // 첫 번째 .container 요소를 선택
+      const controller = container.children[0]; // container의 첫 번째 자식 요소인 ul.controller 선택
+      const liList = controller.children; // ul.controller 내부의 모든 li 요소를 배열 형태로 가져옴
+
+      for (let i = 0; i < liList.length; i++) { // li 요소 개수만큼 반복
+        liList[i].addEventListener('click', (e) => { // 각 li에 클릭 이벤트 핸들러 등록
+          e.preventDefault(); // 기본 동작(예: 링크 이동) 방지
+          // remove,add를 하면서 네비바 효과를 줌
+          for (let j = 0; j < liList.length; j++) { // 모든 li 요소 순회
+            liList[j].classList.remove('on'); // li에서 'on' 클래스 제거
+          }
+          e.currentTarget.classList.add('on'); // 클릭된 li에 'on' 클래스 추가
+        });
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <ul class="controller">
+      <li class="on"><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </div>
+</body>
+
+</html>
