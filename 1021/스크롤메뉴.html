@@ -86,59 +86,59 @@
     }
   </style>
   <script>
-    'use strict';
-    window.addEventListener('load', () => {
-      let h; // 윈도우의 높이에 관련된 변수입니다.
-      let n = 0; // 메뉴 번호에 관련된 변수입니다.(section태그 인덱스)
-      let targety = 0; // 상단 목표 위치에 관련된 변수입니다.
-      let offsety = 0; // 상단 위치에 관련된 변수입니다. 화면에 열렸을때 시작점
-      let timer = 0; // 현재 움직임에 관련된 타이머 변수입니다.
-      let moving = false; // 현재 움직임 유무에 관련된 변수입니다.
-      const container = document.getElementsByClassName("container")[0];
-      const gnb = document.getElementById('gnb')
-      const menuList = gnb.children[0].children; //#gnb > ul > li
-      let pageList = [];//section들을 배열로 저장
+    'use strict'; // 엄격 모드 활성화로 코드 오류를 더 잘 잡도록 함.
 
-      //section 배열요소
+    window.addEventListener('load', () => { // 페이지 로딩이 끝나면 이벤트 실행
+      let h; // 브라우저 창 높이를 저장할 변수
+      let n = 0; // 현재 메뉴 인덱스(몇 번째 섹션인지)를 저장할 변수
+      let targety = 0; // 이동할 목표 y 위치(상단 기준) 값
+      let offsety = 0; // 현재 스크롤된 위치를 저장할 변수
+      let timer = 0; // 애니메이션 타이머 변수
+      let moving = false; // 현재 스크롤 애니메이션 중인지 여부를 저장
+      const container = document.getElementsByClassName("container")[0]; // .container 클래스의 첫 번째 요소 가져옴
+      const gnb = document.getElementById('gnb'); // 퀵메뉴 요소 가져옴
+      const menuList = gnb.children[0].children; // 퀵메뉴의 li 요소들 가져옴 (#gnb > ul > li)
+      let pageList = []; // 섹션들을 저장할 배열
+
+      // 섹션 요소들을 배열에 저장
       for (let i = 0; i < container.children.length; i++) {
-        if (container.children[i].tagName == "SECTION") {
-          pageList.push(container.children[i]);
+        if (container.children[i].tagName == "SECTION") { // 섹션인지 확인
+          pageList.push(container.children[i]); // 섹션이면 배열에 추가
         }
       }
-      console.log(pageList);
+      console.log(pageList); // 배열에 저장된 섹션 목록 출력
 
-
-      //화면 초기값 설정 함수
+      // 초기 화면 설정 함수
       const init = () => {
-        h = window.innerHeight;//웹브라우저의 높이
+        h = window.innerHeight; // 브라우저 창 높이를 변수에 저장
+        targety = n * h; // n번째 섹션의 상단 위치 계산
 
-        targety = n * h;//화면 이동을 위치값
+        menuList[n].classList.add("active"); // 현재 활성화된 메뉴에 active 클래스 추가
 
-        //현재 화면에 보이는 영역에 해당하는 퀵메늅의 버튼 스타일
-        menuList[n].classList.add("active");
-
-        //section태그의 높이값에 현재 화면 높이값을 설정
+        // 각 섹션의 높이를 브라우저 창 높이로 설정
         for (let i = 0; i < pageList.length; i++) {
           pageList[i].style.height = h + "px";
         }
-      }
-      init();
+      };
+      init(); // 초기화 함수 호출
 
-      //테스트 3번콘텐츠 이동
+      // 테스트용으로 3번 섹션으로 이동
       setTimeout(() => {
-        n = 2;
-        targety = n * h;//n=2 
-        movieCategory(offsety, targety);//0,2000
+        n = 2; // n 값을 2로 설정 (세 번째 섹션)
+        targety = n * h; // 목표 위치 계산
+        movieCategory(offsety, targety); // 현재 위치에서 목표 위치로 이동
       }, 1000);
 
+      // 화면 크기 변경 시 초기 설정 함수 호출
+      window.addEventListener('resize', init);
 
-      window.addEventListener('resize', init);//화면의 크기가 바뀔때마다 초기값 설정함수 호출
-      //스크롤이벤트를 활용해서 버튼에 색상 적용
+      // 스크롤 이벤트 발생 시 메뉴 버튼에 active 클래스 적용
       document.addEventListener('scroll', () => {
         const timer = setInterval(() => {
-          clearInterval(timer);
-          offsety = window.pageYOffset;
-          //console.log(offsety);
+          clearInterval(timer); // 타이머 초기화
+          offsety = window.pageYOffset; // 현재 스크롤 위치 저장
+
+          // 스크롤 위치에 따라 메뉴 인덱스(n) 설정
           if (offsety < pageList[1].offsetTop) {
             n = 0;
           } else if (offsety < pageList[2].offsetTop) {
@@ -152,7 +152,7 @@
           } else {
             n = 5;
           }
-
+          // 현재 활성화된 메뉴에 active 클래스 추가, 나머지는 제거
           for (let j = 0; j < menuList.length; j++) {
             if (n == j) {
               menuList[j].classList.add("active");
@@ -160,72 +160,66 @@
               menuList[j].classList.remove("active");
             }
           }
-        }, 10)
+        }, 10); // 10ms마다 실행
       });
 
-      //버튼인덱값 추출 즉 사용자 n값을 생성
+      // 메뉴 클릭 시 해당 섹션으로 이동하는 이벤트 추가
       for (let i = 0; i < menuList.length; i++) {
-        menuList[i].index = i; //0 1 2 3 4 5 인덱스값 설정 선언
+        menuList[i].index = i; // 각 메뉴에 인덱스 번호 부여
         menuList[i].addEventListener('click', (e) => {
-          e.preventDefault();
-          if (moving) return; //true 동작중이다 현재함수 밖으로 나가기
-          offsety = window.pageYOffset;
-          n = e.currentTarget.index;
-          h = window.innerHeight;
-          console.log(h)
-          targety = n * h;
-          movieCategory(offsety, targety)
+          e.preventDefault(); // 기본 이벤트 막음
+          if (moving) return; // 애니메이션 중이면 종료
+
+          offsety = window.pageYOffset; // 현재 스크롤 위치 저장
+          n = e.currentTarget.index; // 클릭한 메뉴의 인덱스 저장
+          h = window.innerHeight; // 현재 창 높이 저장
+          targety = n * h; // 목표 위치 계산
+          movieCategory(offsety, targety); // 섹션으로 이동
         });
       }
 
-
-      //이동하는 함수
-      // function movieCategory(){}
-      const movieCategory = (current, target) => {//현재위치값, 목적위치값
-        //console.log(target)
-        moving = true;//현재 애니메이션 작동이 되는 상태
+      // 애니메이션을 통한 섹션 이동 함수
+      const movieCategory = (current, target) => {
+        moving = true; // 애니메이션 시작 상태로 설정
         const timer = setInterval(() => {
-          if (current > target) { //아래로이동
-            if (Math.abs(target - current) > 8) {//2000까지만 current 증가를 하기위한 조건문  2000-1995
-              current -= 8
+          if (current > target) { // 아래로 이동 중일 때
+            if (Math.abs(target - current) > 8) { // 목표 위치와 현재 위치 차이가 8보다 클 때
+              current -= 8; // 8씩 감소
             } else {
-              current = target //최종 목적지값 확인
-              moving = false;//애니메이션 동작 안하는 상태
-              clearInterval(timer);
-              for (let j = 0; j < menuList.length; j++) {
-                if (n == j) {
-                  menuList[j].classList.add("active");
-                } else {
-                  menuList[j].classList.remove("active");
-                }
-              }
+              current = target; // 목표 위치 도달 시
+              moving = false; // 애니메이션 종료
+              clearInterval(timer); // 타이머 정지
+              updateActiveMenu(); // 활성화된 메뉴 업데이트
             }
-          } else { //위로이동
-            if (Math.abs(target - current) > 8) {//2000까지만 current 증가를 하기위한 조건문
-              current += 8
+          } else { // 위로 이동 중일 때
+            if (Math.abs(target - current) > 8) {
+              current += 8; // 8씩 증가
             } else {
-              current = target //최종 목적지값 확인
-              moving = false;//애니메이션 동작 안하는 상태
-              clearInterval(timer);
-              for (let j = 0; j < menuList.length; j++) {
-                if (n == j) {
-                  menuList[j].classList.add("active");
-                } else {
-                  menuList[j].classList.remove("active");
-                }
-              }
+              current = target; // 목표 위치 도달 시
+              moving = false; // 애니메이션 종료
+              clearInterval(timer); // 타이머 정지
+              updateActiveMenu(); // 활성화된 메뉴 업데이트
             }
           }
-          //애니메이션 동작함수
+
+          // 스크롤 이동 적용
           window.scrollTo({
             top: current,
-            behavior: "smooth"
+            behavior: "smooth" // 부드러운 스크롤 효과
           });
+        }, 1); // 1ms마다 실행
 
-        }, 1);
-
-      }
-
+        // 활성화된 메뉴 업데이트 함수
+        function updateActiveMenu() {
+          for (let j = 0; j < menuList.length; j++) {
+            if (n == j) {
+              menuList[j].classList.add("active");
+            } else {
+              menuList[j].classList.remove("active");
+            }
+          }
+        }
+      };
     });
   </script>
 </head>
