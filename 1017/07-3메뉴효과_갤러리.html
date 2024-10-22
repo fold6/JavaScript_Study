@@ -90,35 +90,26 @@
     window.addEventListener('load', () => { // 페이지가 모두 로드된 후 실행
       const container = document.getElementsByClassName('container')[0];
       // 첫 번째 .container 요소 선택
-
       const controller = container.children[0];
       // container 내부의 첫 번째 자식 요소 (ul.controller) 선택
-
       const picture = document.getElementsByClassName("picture")[0];
       // 첫 번째 .picture 요소 선택
-
       const pictureUl = picture.children[0];
       // picture 내부의 첫 번째 ul 요소 선택
-
       const pictureLi = pictureUl.children;
       // ul 내부의 모든 li 요소 선택 (각 이미지 요소)
-
       const liList = controller.children;
       // controller 내부의 모든 li 요소 선택 (컨트롤 버튼)
-
       let n = 0; // 현재 선택된 인덱스를 저장할 변수 초기화
 
       // 각 li에 클릭 이벤트를 설정
       for (let i = 0; i < liList.length; i++) {
         liList[i].index = i; // 각 li에 인덱스 번호를 저장
-
         liList[i].addEventListener('click', (e) => {
           // li 클릭 시 실행되는 이벤트 핸들러
           e.preventDefault(); // <a> 태그의 기본 동작(페이지 이동) 방지
-
           n = e.currentTarget.index;
           // 클릭된 li의 인덱스를 n에 저장
-
           // 모든 li와 이미지에 대해 스타일 적용 및 제거
           for (let j = 0; j < liList.length; j++) {
             if (j == n) {

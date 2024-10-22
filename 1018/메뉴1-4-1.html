@@ -104,6 +104,12 @@
         })
 
       }
+      subarea.addEventListener('mouseenter', (e) => {
+        e.currentTarget.classList.add('over');
+      });
+      subarea.addEventListener('mouseleave', (e) => {
+        e.currentTarget.classList.remove('over');
+      })
 
 
 
