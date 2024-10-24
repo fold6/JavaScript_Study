@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul,
+    li {
+      list-style: none;
+    }
+
+    img {
+      border: 0;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+
+    .container {
+      overflow: hidden;
+      background-color: #000;
+    }
+
+    .gallery {
+      position: relative;
+      left: 50%;
+      margin: 40px 0 120px;
+      width: 3300px;
+      height: 550px;
+      transform: translateX(-50%);
+      border: 1px solid red;
+    }
+
+    .gallery .inner ul {
+      display: flex;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+
+    .gallery .inner ul li {
+      position: relative;
+      width: 1100px;
+      opacity: 0.35;
+      transition: opacity 0.3s;
+    }
+
+    .gallery .inner ul li.active {
+      opacity: 1;
+    }
+
+    .gallery .inner ul li .content {
+      position: absolute;
+      left: 50%;
+      bottom: -88px;
+      width: 840px;
+      height: 256px;
+      padding: 40px 37px 34px;
+      text-align: center;
+      background-color: #fff;
+      opacity: 1;
+      box-sizing: border-box;
+      transform: translateX(-50%);
+      transition: opacity 0.4s;
+    }
+
+    .gallery .inner ul li.active .content {
+      opacity: 0.9;
+    }
+
+    .gallery .inner li .content strong {
+      font-size: 1.75em;
+      font-weight: 300;
+      color: #998465;
+    }
+
+    .gallery .inner li .content p {
+      padding: 20px 40px 32px;
+      line-height: 1.6;
+      text-align: justify;
+      font-size: 0.913em;
+      color: #333;
+    }
+
+    .gallery .inner li .content a {
+      position: absolute;
+      left: 50%;
+      bottom: 32px;
+      padding: 12px 35px;
+      font-size: 1em;
+      color: #998465;
+      border: 2px solid rgba(153, 132, 101, .1);
+      transform: translateX(-50%);
+      transition: 0.3s;
+    }
+
+    .gallery .inner li .content a:hover {
+      background-color: #998465;
+      color: #fff;
+      border-color: #998465;
+    }
+
+    .gallery .control a {
+      position: absolute;
+      top: 50%;
+      width: 36px;
+      height: 36px;
+      font-size: 0;
+      overflow: hidden;
+      text-indent: -9999px;
+      transform: translateY(-50%);
+    }
+
+    .gallery .control a.prev {
+      left: 1000px;
+      border-width: 1px 0 0 1px;
+      border-style: solid;
+      border-color: #fff;
+      transform: rotate(-45deg);
+    }
+
+    .gallery .control a.next {
+      right: 1000px;
+      border-width: 0 1px 1px 0;
+      border-style: solid;
+      border-color: #fff;
+      transform: rotate(-45deg);
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+  <script>
+    window.addEventListener("load", () => {
+      let w = 1100; //한동작이 발생했을때 움직이는 거리
+      let count = 1; //카운트
+
+      let gallery = document.getElementsByClassName("gallery")[0]; //div.gallery
+      let galleryUl = gallery.firstElementChild.firstElementChild; //div.gallery > div > ul
+      let control = gallery.getElementsByClassName("control")[0]; //div.gallery div.control
+      let [prevBtn, nextBtn] = control.children;
+
+      //버튼 이벤트 발생하는 함수
+      prevBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        let firstChild = galleryUl.firstElementChild;//추가할 위치
+        let lastChild = galleryUl.lastElementChild;// 복사할 대상이면 삭제
+        let clone = lastChild.cloneNode(true);//복제
+
+        galleryUl.removeChild(lastChild);//마지막요소 삭제
+        galleryUl.insertBefore(clone, firstChild);//추가
+
+        let targetx = 0;
+        targetx -= w; // -1100
+        galleryUl.style.left = targetx + "px";
+        targetx += w;
+
+        gsap.to(galleryUl, { let: targetx, duration: 0.4 });
+      });
+
+      nextBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+      });
+
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="gallery">
+      <div class="inner">
+        <ul>
+          <li>
+            <div class="photo"><img src="images/main_gallery1.jpg" alt="image1"></div>
+            <div class="content">
+              <strong>CAMPING CAR & SURVIVOR</strong>
+              <p>Enjoy the night view of Seongsan Ilchulbong Peak, one of Jeju's most spectacular views. Camping Car &
+                Survival provides the best camping site suitable for observing the night sky of Seongsan Ilchulbong Peak
+                and Oreum.</p>
+              <a href="">shortcuts</a>
+            </div>
+          </li>
+          <li>
+            <div class="photo"><img src="images/main_gallery2.jpg" alt="image2"></div>
+            <div class="content">
+              <strong>CAMPING CAR & SURVIVOR</strong>
+              <p>See canola flowers at Soubong Peak in Hamdeok, Jeju. Camping Car & Survival provides the best camping
+                site in Soubong for observing the beach and canola flower fields.</p>
+              <a href="">shortcuts</a>
+            </div>
+          </li>
+          <li>
+            <div class="photo"><img src="images/main_gallery3.jpg" alt="image3"></div>
+            <div class="content">
+              <strong>CAMPING CAR & SURVIVOR</strong>
+              <p>Enjoy a wonderful sunset at Geumneung, a famous sunset spot in Jeju. Camping Car & Survival provides
+                the best camping site suitable for observing various aspects of Geumneung.</p>
+              <a href="">shortcuts</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="control">
+        <a href="" class="prev">prev</a>
+        <a href="" class="next">next</a>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

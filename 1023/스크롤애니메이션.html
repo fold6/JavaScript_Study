@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #header {
+      height: 100vh;
+      overflow: hidden;
+      background-color: aquamarine;
+    }
+
+    #header>div {
+      margin: 50px 20px;
+      padding: 10px;
+      float: left;
+      width: 300px;
+      height: 300px;
+      border: 1px solid #000;
+      transform: translateY(100px);
+      transition: all 0.4s;
+    }
+
+    #header.act>div {
+      transform: translateY(0px);
+    }
+
+    #header .type1 {
+      transition-delay: 0;
+    }
+
+    #header .type2 {
+      transition-delay: 0.5s;
+    }
+
+    #header .type3 {
+      transition-delay: 1s;
+    }
+
+
+    #page1 {
+      height: 100vh;
+      overflow: hidden;
+      background-color: rgb(237, 222, 60);
+    }
+
+    #page1>div {
+      margin: 50px 20px;
+      padding: 10px;
+      float: left;
+      width: 300px;
+      height: 300px;
+      border: 1px solid #000;
+      transform: translateY(100px);
+      transition: all 0.4s;
+    }
+
+    #page1.act>div {
+      transform: translateY(0px);
+    }
+
+    #page1 .type1 {
+      transition-delay: 0;
+    }
+
+    #page1 .type2 {
+      transition-delay: 0.5s;
+    }
+
+    #page1 .type3 {
+      transition-delay: 1s;
+    }
+
+
+    #page2 {
+      height: 100vh;
+      overflow: hidden;
+      background-color: rgb(221, 171, 242);
+    }
+
+    #page2>div {
+      margin: 50px 20px;
+      padding: 10px;
+      float: left;
+      width: 300px;
+      height: 300px;
+      border: 1px solid #000;
+      transform: translateY(100px);
+      transition: all 0.4s;
+    }
+
+    #page2.act>div {
+      transform: translateY(0px);
+    }
+
+    #page2 .type1 {
+      transition-delay: 0;
+    }
+
+    #page2 .type2 {
+      transition-delay: 0.5s;
+    }
+
+    #page2 .type3 {
+      transition-delay: 1s;
+    }
+  </style>
+  <script>
+    'use strict';
+    window.addEventListener('load', () => {
+      const wrapper = document.getElementsByClassName("wrapper")[0];
+      const contents = wrapper.children; //div.wrapper > section
+      let t = window.pageYOffset; // 윈도우 상단 위치 변수
+      let offsety = [];// 위치 이동 배열
+      let n = 0;// 카테고리 번호 변수
+
+      for (let i = 0; i < contents.length; i++) {
+        offsety.push(contents[i].offsetTop);
+      }
+
+      //웹브라우저 열렸을때 바로 실행되는 애니메이션
+      contents[n].classList.add("act");
+
+
+
+      const scrollHandler = () => {
+        const timer = setTimeout(() => {
+          clearTimeout(timer);
+          t = window.pageYOffset;
+          //console.log(t);
+          if (t < offsety[1]) {
+            n = 0;
+          } else if (t < offsety[2]) {
+            n = 1;
+
+            if (t == (document.body.clientHeight - window.innerHeight)) {
+              //document.body.clientHeight  웹 문서의 세로 크기입니다.
+              //window.innerHeigh 윈도우의 세로 크기입니다.
+              n = 2;
+            }
+
+          } else {
+            n = 2;
+          }
+
+          for (let j = 0; j < contents.length; j++) {
+            if (j == n) {
+              contents[j].classList.add('act');
+            }
+          }
+
+          if (n == 2) {
+            window.removeEventListener("scroll", scrollHandler);
+          }
+        }, 10)
+      }
+
+      //스크롤이 발생했을때 애니메이션 동작
+      window.addEventListener('scroll', scrollHandler);
+
+    });
+  </script>
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <section id="header">
+      <div class="type1">type1</div>
+      <div class="type2">type2</div>
+      <div class="type3">type3</div>
+    </section>
+    <section id="page1">
+      <div class="type1">type1</div>
+      <div class="type2">type2</div>
+      <div class="type3">type3</div>
+    </section>
+    <section id="page2">
+      <div class="type1">type1</div>
+      <div class="type2">type2</div>
+      <div class="type3">type3</div>
+    </section>
+
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul,
+    li {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .container {
+      position: relative;
+      min-width: 900px;
+    }
+
+    .nav,
+    .fixed_nav {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 120px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+
+
+    .nav ul,
+    .fixed_nav ul {
+      margin: 20px auto 20px;
+    }
+
+    .nav .logo,
+    .fixed_nav .logo {
+      width: 100px;
+      height: 41px;
+    }
+
+    .nav li,
+    .fixed_nav li {
+      display: inline-block;
+      margin-left: 40px;
+      vertical-align: middle;
+    }
+
+    .nav li a,
+    .fixed_nav li a {
+      display: block;
+      width: 100%;
+      text-transform: uppercase;
+      font-size: 14px;
+      font-weight: 600;
+      color: #a2a2a2;
+    }
+
+    .fixed_nav {
+      position: fixed;
+      top: -120px;
+      background-color: rgba (0, 0, 0, 0.1);
+      transition: all 0.4s;
+    }
+
+    /*애니메이션을 적용*/
+    .fixed_nav.show {
+      top: 0;
+    }
+
+    /*버튼에 효과적용*/
+    .nav li a:hover,
+    .nav li a.on,
+    .fixed_nav li a:hover,
+    .fixed_nav li a.on {
+      color: #e5493a;
+    }
+
+    .contents div {
+      padding: 120px 40px 40px;
+      height: 700px;
+      font-size: 64px;
+      font-weight: 300;
+      color: #e0e0e0;
+      border-bottom: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+  </style>
+  <script>
+    'use strict';
+    window.addEventListener('load', () => {
+      const container = document.getElementsByClassName('container')[0];
+      let nav, fixedNav, contents;
+
+      for (let i = 0; i < container.children.length; i++) {
+        switch (container.children[i].className) {
+          case 'nav':
+            nav = container.children[i];
+            break;
+          case 'fixed_nav':
+            fixedNav = container.children[i];
+            break;
+          case 'contents':
+            contents = container.children[i];
+            break;
+        }
+      }
+      //console.log(nav);
+      //console.log(fixedNav);
+      //console.log(contents);
+
+
+      //클릭했을때 스크롤메뉴 작동
+      const navUl = nav.children[0]; //div.nav > ul
+      const navLi = navUl.children; //div.nav > ul > li
+      let navList = [];
+      const fixedNavUl = fixedNav.children[0]; //div.fixednav > ul
+      const fixedNavLi = fixedNavUl.children; //div.fixednav > ul > li
+      let fixedNavList = [];
+      const contentsLi = contents.children; //div.contents > div
+
+      let n = 0; //페이지 번호 변수
+      let targety = 0; // 상단 목표 위치에 관련된 변수
+      let offsety = 0; // 상단 위치에 관련된 변수
+      let moving = false; // 현재 움직임 유무에 관련된 변수
+
+      for (let j = 0; j < navLi.length; j++) {
+        if (navLi[j].children[0].getAttribute('href') != "") {//href속성이 있는 요소 배열 입력
+          navList.push(navLi[j]);
+        }
+
+        if (fixedNavLi[j].children[0].getAttribute('href') != "") {//href속성이 있는 요소 배열 입력
+          fixedNavList.push(fixedNavLi[j])
+        }
+      }
+      // console.log(navList);
+      // console.log(fixedNavList);
+
+      navList[n].children[0].classList.add('on');
+
+      for (let k = 0; k < navList.length; k++) {
+        navList[k].index = fixedNavList[k].index = k;//인덱스 설정
+
+        navList[k].addEventListener('click', (e) => {
+          clickMoving(e)
+        });
+        fixedNavList[k].addEventListener('click', (e) => {
+          clickMoving(e)
+        })
+      }
+
+      //스크롤에 의해 메뉴에 효과적용 및 fixedNav를 보이거나 숨김
+      window.addEventListener('scroll', () => {
+        const timer = setInterval(() => {
+          clearTimeout(timer);
+          offsety = window.pageYOffset;
+
+          if (offsety < contentsLi[1].offsetTop) {
+            n = 0;
+          } else if (offsety < contentsLi[2].offsetTop) {
+            n = 1;
+          } else if (offsety < contentsLi[3].offsetTop) {
+            n = 2;
+          } else if (offsety < contentsLi[4].offsetTop) {
+            n = 3;
+          } else if (offsety < contentsLi[5].offsetTop) {
+            n = 4;
+          } else if (offsety < contentsLi[6].offsetTop) {
+            n = 5;
+          } else if (offsety < contentsLi[7].offsetTop) {
+            n = 6;
+
+            if (offsety == Math.ceil(document.body.offsetHeight - window.innerHeight)) {
+              n = 7;
+            }
+          } else {
+            n = 7;
+          }
+
+          //스크롤될대 해당인덱스값의 버튼에 효과적용
+          for (let i = 0; i < navList.length; i++) {
+            if (n == i) {
+              navList[i].children[0].classList.add("on");
+              fixedNavList[i].children[0].classList.add("on");
+            } else {
+              navList[i].children[0].classList.remove("on");
+              fixedNavList[i].children[0].classList.remove("on");
+            }
+          }
+          // 스크롤위치값에 의해서 fixedNav를 숨기거나 보이게 함
+          if (offsety > 100) {
+            fixedNav.classList.add('show');
+          } else {
+            fixedNav.classList.remove('show');
+          }
+        }, 10)
+
+      })
+
+
+
+      //nav li를 클릭하면 스크롤 이동 값을 설정
+      const clickMoving = (evt) => {
+        evt.preventDefault();
+        if (moving) return;//애니메이션 상태가 작동중이면 함수 밖으로 나감
+        n = evt.currentTarget.index;//클릭한 버튼의 인덱스값 새로운 인덱스값
+        offsety = window.pageYOffset;
+        targety = contentsLi[n].offsetTop;//버튼 인덱스값을 적용한 contentsLi의 인덱스가 목적지
+        moveCategory(offsety, targety);
+      }
+
+      //스크롤에 애니메이션 적용 함수
+      const moveCategory = (current, target) => {
+        moving = true;
+        const timer = setInterval(() => {
+          if (target > current) {//타겟이 현재 위치보다 크다면 아래로 이동
+            if (Math.abs(target - current) > 8) {//target끼지만 반복을 하기위해 2000
+              current += 8;
+            } else {
+              current = target;
+              moving = false;
+              clearInterval(timer);
+              //목적콘텐츠와 인덱스가 동일한 버튼에 스타일 적용
+              for (let g = 0; g < navList.length; g++) {
+                if (n == g) {
+                  navList[g].children[0].classList.add('on');
+                  fixedNavList[g].children[0].classList.add('on');
+                } else {
+                  navList[g].children[0].classList.remove('on');
+                  fixedNavList[g].children[0].classList.remove('on');
+                }
+              }
+
+
+            }
+          } else {//타겟이 현재 위치보다 작다면 위로 이동
+            if (Math.abs(target - current) > 8) {//target끼지만 반복을 하기위해 2000
+              current -= 8;
+            } else {
+              current = target;
+              moving = false;
+              clearInterval(timer);
+              //목적콘텐츠와 인덱스가 동일한 버튼에 스타일 적용
+              for (let g = 0; g < navList.length; g++) {
+                if (n == g) {
+                  navList[g].children[0].classList.add('on');
+                  fixedNavList[g].children[0].classList.add('on');
+                } else {
+                  navList[g].children[0].classLists.remove('on');
+                  fixedNavList[g].children[0].classList.remove('on');
+                }
+              }
+            }
+          }
+          window.scrollTo({
+            top: current,
+            behavior: "smooth"
+          });
+        }, 1);
+      }
+
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="nav">
+      <ul>
+        <li class="logo"><a href="">LOGO01</a></li>
+        <li><a href="#area1">HOME<img src=""></a></li>
+        <li><a href="#area2">ABOUT US</a></li>
+        <li><a href="#area3">PAGES<img src=""></a></li>
+        <li><a href="#area4">FEATURES<img src=""></a></li>
+        <li><a href="#area5">PORTFOLIO</a></li>
+        <li><a href="#area6">BLOG</a></li>
+        <li><a href="#area7">SHOP<img src=""></a></li>
+        <li><a href="#area8">CONTACT US</a></li>
+      </ul>
+    </div>
+    <div class="fixed_nav">
+      <ul>
+        <li class="logo"><a href="">LOGO02</a></li>
+        <li><a href="#area1">HOME<img src=""></a></li>
+        <li><a href="#area2">ABOUT US</a></li>
+        <li><a href="#area3">PAGES<img src=""></a></li>
+        <li><a href="#area4">FEATURES<img src=""></a></li>
+        <li><a href="#area5">PORTFOLIO</a></li>
+        <li><a href="#area6">BLOG</a></li>
+        <li><a href="#area7">SHOP<img src=""></a></li>
+        <li><a href="#area8">CONTACT US</a></li>
+      </ul>
+    </div>
+
+
+    <!-- 화면에 보이는 영역 -->
+    <div class="contents">
+      <div id="area1">content1</div>
+      <div id="area2">content2</div>
+      <div id="area3">content3</div>
+      <div id="area4">content4</div>
+      <div id="area5">content5</div>
+      <div id="area6">content6</div>
+      <div id="area7">content7</div>
+      <div id="area8">content8</div>
+    </div>
+  </div>
+</body>
+
+</html>

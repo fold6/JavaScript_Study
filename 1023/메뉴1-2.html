@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #f1f1f1;
+    }
+
+    ul,
+    li {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+
+    .container {
+      margin-top: 35px;
+      padding: 20px;
+    }
+
+    nav>ul>li {
+      float: left;
+      width: 140px;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+      font-size: 14px;
+      border-right: 1px solid #ccc;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    nav>ul>li:last-child {
+      border-right: 0;
+    }
+
+    nav>ul>li>a {
+      display: block;
+      width: 100%;
+      line-height: 40px;
+      background: #eaeaea;
+      color: #666;
+      transition: background 0.4s, color 0.4s;
+    }
+
+    nav>ul>li:hover>a,
+    nav>ul>li>a.over {
+      font-weight: 600;
+      background: #8ac007;
+      color: #fff;
+    }
+
+    nav .sub {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 40px;
+      width: 100%;
+      transition: all 0.5s;
+    }
+
+    nav .sub li {
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    nav .sub li a {
+      display: block;
+      padding: 3px 12px;
+      color: #666;
+      background-color: #fff;
+    }
+
+    nav .sub li a:hover,
+    nav .sub li a:focus {
+      background-color: #f8f8f8;
+    }
+  </style>
+  <script>
+    'use strict';
+    window.addEventListener('load', () => {
+      const nav = document.getElementById('nav');
+      const depth1Li = nav.children[0].children; //nav > ul > li
+
+      for (let i = 0; i < depth1Li.length; i++) {
+        depth1Li[i].addEventListener('mouseenter', (e) => {
+          const link = e.target.children[0];
+          link.classList.add('over');
+
+          const sub = e.target.children[1];
+          sub.style.display = "block";
+          sub.classList.add('act');
+        });
+        depth1Li[i].addEventListener('mouseleave', (e) => {
+          const link = e.target.children[0];
+          link.classList.remove('over');
+
+          const sub = e.target.children[1];
+          sub.style.display = "none";
+          sub.classList.remove('act');
+        })
+
+
+      }
+    })
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <nav id="nav">
+      <ul>
+        <li>
+          <a href="#">main1</a>
+          <ul class="sub">
+            <li><a href="">sub1</a></li>
+            <li><a href="">sub2</a></li>
+            <li><a href="">sub3</a></li>
+            <li><a href="">sub4</a></li>
+            <li><a href="">sub5</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">main2</a>
+          <ul class="sub">
+            <li><a href="">sub1</a></li>
+            <li><a href="">sub2</a></li>
+            <li><a href="">sub3</a></li>
+            <li><a href="">sub4</a></li>
+
+          </ul>
+        </li>
+        <li>
+          <a href="#">main3</a>
+          <ul class="sub">
+            <li><a href="">sub1</a></li>
+            <li><a href="">sub2</a></li>
+            <li><a href="">sub3</a></li>
+
+          </ul>
+        </li>
+        <li>
+          <a href="#">main4</a>
+          <ul class="sub">
+            <li><a href="">sub1</a></li>
+            <li><a href="">sub2</a></li>
+            <li><a href="">sub3</a></li>
+            <li><a href="">sub4</a></li>
+            <li><a href="">sub5</a></li>
+          </ul>
+        </li>
+      </ul>
+
+    </nav>
+  </div>
+</body>
+
+</html>
