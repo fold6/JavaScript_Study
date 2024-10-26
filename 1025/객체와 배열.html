@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    const students = [];
+    students.push({
+      이름: "구름",
+      국어: 87,
+      영어: 98,
+      수학: 88,
+      과학: 90
+    });
+    students.push({
+      이름: "별이",
+      국어: 92,
+      영어: 98,
+      수학: 96,
+      과학: 88
+    });
+    students.push({
+      이름: "겨울",
+      국어: 76,
+      영어: 96,
+      수학: 94,
+      과학: 86
+    });
+    students.push({
+      이름: "바다",
+      국어: 98,
+      영어: 52,
+      수학: 98,
+      과학: 92
+    });
+    /*
+      let, const, 배열명 = [], 객체명 = {}
+
+      현재 만들어지고 있는 대부분의 프로그램은 '어떤 데이터를 사용하는가'에서 시작한다
+      그리고 현실의 객체는 수많은 속성을 가지고 있고 그 속성들이 모두 데이터가 될 수 있다
+      사람을 예로 들면 키, 몸무게, 얼굴 둘레, 눈썹길이, 눈크기 등등 현실에 존재하는 모든 정보를
+      완벽하게 컴퓨터 내부에 입력하는 것이 불가능에 가깝다.
+      다행히 프로그램은 그러한 것이 모두 필요하지 않다
+      만약 병원에서 사용하는 프로그램을 만든다면 의사,간호사,환자,병실,예약기록,입퇴원기록 같은
+      정보가 필요하고 그중에서 환자정보를 사용한다면 환자이름, 생년월일,성별,연락처등만 알면된다
+      이와같이 프로그램에 필요한 요소만 사용해서 객체를 표현하는 추상화라고 한다
+      좀더 포괄적으로인 사전적 의미로는 복잡한 자료,모듈,시스템등으로 핵심적인 개념과 기능을 간추려내는
+      것을 추상화라고 한다
+      */
+    // 각 객체에 메소드 추가
+    for (const student of students) {
+      student.getSum = function () {
+        return this.국어 + this.영어 + this.수학 + this.과학;
+      };
+
+      student.getAverage = function () {
+        return this.getSum() / 4;
+      };
+    }
+
+    // 출력합니다.
+    let output = "이름\t총점\t평균\n";
+    for (const s of students) {
+      output += `${s.이름}\t${s.getSum()}점\t${s.getAverage().toFixed(2)}점\n`;
+    }
+    console.log(output);
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

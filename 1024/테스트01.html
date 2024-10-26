@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+      margin-bottom: 1em;
+    }
+
+    .box1 {
+      background-color: skyblue;
+    }
+
+    .box2 {
+      background-color: rgb(224, 180, 78);
+    }
+
+    .box3 {
+      background-color: rgb(231, 112, 223);
+    }
+  </style>
+  <script>
+    window.addEventListener('load', () => {
+      //애니메이션이 되는 최종 결과값 gsap.to(타겟,{속성:속성값,속성:속성값})
+      gsap.to(".box1", { x: 500, duration: 2 });
+
+      //원래 위치로 되돌아 오는 결과값
+      gsap.from(".box2", { x: 500, duration: 2 })
+
+      //애니메이션 시작값과 끝나는값
+      gsap.fromTo(".box3",
+        { height: 50 }, // from
+        { y: 300, height: 150, duration: 3 } // to
+      );
+    })
+  </script>
+</head>
+
+<body>
+  <div class="box box1">box1</div>
+  <div class="box box2">box2</div>
+  <div class="box box3">box2</div>
+</body>
+
+</html>

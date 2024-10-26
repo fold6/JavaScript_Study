@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      padding: 20px;
+    }
+
+    ul,
+    li {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .container {
+      margin-top: 50px;
+    }
+
+    .check input {
+      margin-left: 20px;
+      margin-top: 40px;
+      vertical-align: middle;
+    }
+
+    .check input#check1 {
+      margin-top: 0;
+    }
+
+    .check_box1 {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      overflow: hidden;
+      vertical-align: middle;
+      text-indent: -9999px;
+      background: url(./images/spr_form.png) no-repeat 0 0;
+    }
+
+    .check_box1.checked {
+      background-position: -36px 0;
+    }
+
+    .check_box2 {
+      display: inline-block;
+      margin-top: 40px;
+      width: 24px;
+      height: 24px;
+      overflow: hidden;
+      vertical-align: middle;
+      text-indent: -9999px;
+      background: url(./images/spr_form.png) no-repeat -80px 0;
+    }
+
+    .check_box2.checked {
+      background-position: -107px 0;
+    }
+
+    .check_box3 {
+      display: inline-block;
+      margin-top: 40px;
+      width: 24px;
+      height: 24px;
+      overflow: hidden;
+      vertical-align: middle;
+      text-indent: -9999px;
+      background: url(./images/spr_form.png) no-repeat 0 -30px;
+    }
+
+    .check_box3.checked {
+      background-position: -36px -30px;
+    }
+
+    .check_box4 {
+      display: inline-block;
+      margin-top: 40px;
+      width: 56px;
+      height: 33px;
+      overflow: hidden;
+      vertical-align: middle;
+      text-indent: -9999px;
+      background: url(./images/spr_form.png) no-repeat 0 -66px;
+    }
+
+    .check_box4.checked {
+      background-position: -72px -66px;
+    }
+
+    .select {
+      margin-top: 40px;
+    }
+
+    .select dl {
+      display: inline-block;
+      position: relative;
+      line-height: 27px;
+      vertical-align: middle;
+    }
+
+    .select dl dt a {
+      display: block;
+      position: relative;
+      padding-left: 10px;
+      width: 180px;
+      height: 27px;
+      text-decoration: none;
+      font-size: 0.75em;
+      color: #666;
+      border: 1px solid #dedede;
+    }
+
+    .select dl dt a span {
+      display: inline-block;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      margin-top: -3px;
+      width: 10px;
+      height: 6px;
+      background: url(./images/spr_btns.png) no-repeat -127px -73px;
+    }
+
+    .select dl dt a.active span {
+      background-position: -127px -93px;
+    }
+
+    .select dl dd {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 28px;
+      z-index: 10;
+      width: 190px;
+      overflow: hidden;
+      background-color: #fff;
+      border: 1px solid #dedede;
+    }
+
+    .select dl dd li {
+      border-top: 1px solid #eaefe3;
+    }
+
+    .select dl dd li:first-child {
+      border-top: 0px;
+    }
+
+    .select dl dd li a {
+      display: block;
+      position: relative;
+      padding-left: 31px;
+      line-height: 32px;
+      font-size: 0.75em;
+      background-color: #fff;
+      color: #888;
+      transition: background-color 0.3s;
+    }
+
+    .select dl dd li a .active {
+      background-color: #f1f1f1;
+    }
+
+    .select dl dd li a::after {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 6px;
+      width: 21px;
+      height: 21px;
+      background: url(./images/spr_btns.png) no-repeat 0 0;
+    }
+
+
+    .select dl dd li .eng::after {
+      background-position: -392px -360px;
+
+    }
+
+
+    .select dl dd li .cn::after,
+    .select dl dd ul li .glo:after {
+      background-position: -392px -395px;
+    }
+
+    .select select {
+      display: none;
+      margin-left: 20px;
+      vertical-align: middle;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+
+
+
+  <script>
+    // 페이지가 로드되면 아래 코드 실행
+    window.addEventListener('load', () => {
+      // join 이라는 이름의 폼 요소를 선택 (formArea에 참조)
+      let formArea = document.join;
+      let selectArea, select, selectDl, selectDt, selectDd, selectList;
+
+      // formArea의 자식 요소들을 순회하면서 처리
+      for (let item of formArea.children) {
+        // 클래스가 "check"인 요소일 경우 체크박스 이벤트 처리
+        // for of 문 :   selectArea, select, selectDl 같은 반복 가능한 객체의 각 요소에 접근
+        // for (let 변수 of 반복가능한객체) {
+        // 각 요소에 대해 실행할 코드
+
+        if (item.className === "check") {
+          let checkBox = item.firstElementChild; // 첫 번째 자식(체크박스) 참조
+
+          // 체크박스 클릭 시 이벤트 핸들러 등록
+          // 체크박스 클릭 시 이벤트 핸들러 등록
+          // 체크박스 클릭 시 이벤트 핸들러 등록
+
+          checkBox.addEventListener('click', (e) => {
+            e.preventDefault(); // 기본 동작 차단 (예: 폼 제출 방지)
+
+            // 체크 여부에 따라 클래스와 속성 토글
+            if (e.target.classList.contains("checked") === false) {
+              e.target.classList.add('checked'); // 'checked' 클래스 추가(스타일 추가는 add class로 해야함)
+              e.target.nextElementSibling.setAttribute('checked', "true"); // 인접한 요소에 checked 속성 부여
+
+            } else {
+              e.target.classList.remove('checked'); // 'checked' 클래스 제거
+              e.target.nextElementSibling.removeAttribute('checked'); // checked 속성 제거
+            }
+          });
+
+          //체크박스 이벤트 끝
+          //체크박스 이벤트 끝
+          //체크박스 이벤트 끝
+
+
+          // 클래스가 "select"인 경우 드롭다운 선택 이벤트 처리
+          // 클래스가 "select"인 경우 드롭다운 선택 이벤트 처리
+          // 클래스가 "select"인 경우 드롭다운 선택 이벤트 처리
+        } else if (item.className === "select") {
+          selectArea = item; // select 영역 참조
+          selectDl = selectArea.firstElementChild; // .select > dl 참조
+          select = selectArea.lastElementChild; // .select > select 참조
+
+          // dl 요소의 자식 요소들 순회
+          for (let item of selectDl.children) {
+            if (item.tagName === "DT") {
+              selectDt = item; // dt 요소 참조
+            } else if (item.tagName === "DD") {
+              selectDd = item; // dd 요소 참조
+              selectList = selectDd.firstElementChild.children; // dd > ul > li 목록 참조
+            }
+          }
+
+          // dt 클릭 시 드롭다운 열고 닫는 이벤트 등록
+          selectDt.addEventListener('click', (e) => {
+            e.preventDefault(); // 기본 동작 차단
+            let link = e.currentTarget.firstElementChild; // 첫 번째 자식(a 태그) 참조
+
+            // 'active' 클래스에 따라 드롭다운 열기/닫기 애니메이션 적용
+            if (link.classList.contains('active') === false) {
+              link.classList.add('active'); // 'active' 클래스 추가
+              gsap.fromTo(selectDd, { // dd를 열기
+                display: "block",
+                height: 0
+              }, {
+                height: "auto",
+                duration: 0.2
+              });
+            } else {
+              link.classList.remove('active'); // 'active' 클래스 제거
+              gsap.to(selectDd, { // dd를 닫기
+                height: 0,
+                duration: 0.2,
+                onComplete: () => {
+                  selectDd.removeAttribute("style"); // 인라인 스타일 제거
+                }
+              });
+            }
+          });
+
+          // 드롭다운 항목(li)마다 클릭 이벤트 등록
+          for (let i = 0; i < selectList.length; i++) {
+            selectList[i].idx = i; // 각 항목에 인덱스 부여
+
+            selectList[i].addEventListener('click', (e) => {
+              e.preventDefault(); // 기본 동작 차단
+              let n = e.currentTarget.idx; // 클릭한 항목의 인덱스 값
+              let listName = e.currentTarget.firstElementChild.innerText; // 클릭한 항목의 텍스트
+
+              // dt 요소의 텍스트를 선택한 항목의 텍스트로 변경
+              selectDt.firstElementChild.innerHTML = listName + "<span></span>";
+              selectDt.firstElementChild.classList.remove("active"); // 'active' 클래스 제거
+
+              // 드롭다운 닫기 애니메이션 적용
+              gsap.to(selectDd, {
+                height: 0,
+                duration: 0.3,
+                onComplete: () => {
+                  selectDd.removeAttribute("style"); // 인라인 스타일 제거
+                }
+              });
+
+              // 선택한 인덱스에 맞는 select 태그의 option 요소 선택
+              for (let j = 0; j < select.children.length; j++) {
+                select.children[j].idx = i; // 각 option 요소에 인덱스 부여
+                // 선택한 인덱스와 일치하는 option 요소에 selected 속성 부여
+                if (j === n + 1) {
+                  select.children[j].setAttribute("selected", "true");
+                  console.log(select.children[j].textContent);
+                  // 선택된 option 텍스트 콘솔에서 확인
+                } else {
+                  // 나머지 option 요소의 selected 속성 제거
+                  select.children[i].removeAttribute("selected");
+                }
+              }
+            });
+          }
+        }
+      }
+
+    });
+  </script>
+
+</head>
+
+<body>
+  <div class="container">
+    <form name="join">
+      <div class="check">
+        <a href="" class="check_box1" title="check box1">check1</a>
+        <input type="checkbox" id="check1">
+      </div>
+      <div class="check">
+        <a href="" class="check_box2" title="check box2">check2</a>
+        <input type="checkbox" id="check2">
+      </div>
+      <div class="check">
+        <a href="" class="check_box3" title="check box3">check3</a>
+        <input type="radio" id="check3">
+      </div>
+      <div class="check">
+        <a href="" class="check_box4" title="check box4">check4</a>
+        <input type="radio" id="check4">
+      </div>
+
+      <div class="select">
+        <dl>
+          <dt><a href="#">GLOBAL SITE<span></span></a></dt>
+          <dd>
+            <ul>
+              <li><a href="/global/en/index" class="eng">Global / English</a></li>
+              <li><a href="/global/cn/index" class="glo">Global / 中國語（繁體）</a></li>
+              <li><a href="http://www.naturerepublic.cn/index" class="cn">China / 汉语（简体）</a></li>
+            </ul>
+          </dd>
+        </dl>
+        <select>
+          <option>GLOBAL SITE</option>
+          <!-- 보통은  <option value="global">GLOBAL SITE</option> 처럼 option에 바로 value 값을 주지만, 스타일 작성 편의를 위해 위에 따로 <dd> 태그안에 작성하고 이 select를 none 시킴-->
+          <option>Global / English</option>
+          <option>Global / 中國語（繁體）</option>
+          <option>China / 汉语（简体）</option>
+        </select>
+      </div>
+    </form>
+
+  </div>
+  </div>
+</body>
+
+</html>

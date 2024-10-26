@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul,
+    li {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .container {
+      margin-top: 50px;
+    }
+
+    .check input {
+      margin-left: 20px;
+      margin-top: 40px;
+      vertical-align: middle;
+    }
+
+    .check input#check1 {
+      margin-top: 0;
+    }
+
+    .check_box1 {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      overflow: hidden;
+      vertical-align: middle;
+      text-indent: -9999px;
+      background: url(./images/spr_form.png) no-repeat 0 0;
+    }
+
+    .check_box1.checked {
+      background-position: -36px 0;
+    }
+
+    .check_box2 {
+      display: inline-block;
+      margin-top: 40px;
+      width: 24px;
+      height: 24px;
+      overflow: hidden;
+      vertical-align: middle;
+      text-indent: -9999px;
+      background: url(./images/spr_form.png) no-repeat -80px 0;
+    }
+
+    .check_box2.checked {
+      background-position: -107px 0;
+    }
+
+    .check_box3 {
+      display: inline-block;
+      margin-top: 40px;
+      width: 24px;
+      height: 24px;
+      overflow: hidden;
+      vertical-align: middle;
+      text-indent: -9999px;
+      background: url(./images/spr_form.png) no-repeat 0 -30px;
+    }
+
+    .check_box3.checked {
+      background-position: -36px -30px;
+    }
+
+    .check_box4 {
+      display: inline-block;
+      margin-top: 40px;
+      width: 56px;
+      height: 33px;
+      overflow: hidden;
+      vertical-align: middle;
+      text-indent: -9999px;
+      background: url(./images/spr_form.png) no-repeat 0 -66px;
+    }
+
+    .check_box4.checked {
+      background-position: -72px -66px;
+    }
+
+    .select {
+      margin-top: 40px;
+    }
+
+    .select dl {
+      display: inline-block;
+      position: relative;
+      line-height: 27px;
+      vertical-align: middle;
+    }
+
+    .select dl dt a {
+      display: block;
+      position: relative;
+      padding-left: 10px;
+      width: 180px;
+      height: 27px;
+      text-decoration: none;
+      font-size: 0.75em;
+      color: #666;
+      border: 1px solid #dedede;
+    }
+
+    .select dl dt a span {
+      display: inline-block;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      margin-top: -3px;
+      width: 10px;
+      height: 6px;
+      background: url(./images/spr_btns.png) no-repeat -127px -73px;
+    }
+
+    .select dl dt a.active span {
+      background-position: -127px -93px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <form name="join">
+      <div class="check">
+        <a href="" class="check_box1" title="check box1">check1</a>
+        <input type="checkbox" id="check1">
+      </div>
+      <div class="check">
+        <a href="" class="check_box2" title="check box2">check2</a>
+        <input type="checkbox" id="check2">
+      </div>
+      <div class="check">
+        <a href="" class="check_box3" title="check box3">check3</a>
+        <input type="radio" id="check3">
+      </div>
+      <div class="check">
+        <a href="" class="check_box4" title="check box4">check4</a>
+        <input type="radio" id="check4">
+      </div>
+      <div class="select">
+        <dl>
+          <dt><a href="#">GLOBAL SITE<span></span></a></dt>
+          <dd>
+            <ul>
+              <li><a href="/global/en/index" class="eng">Global / English</a></li>
+              <li><a href="/global/cn/index" class="glo">Global / 中國語（繁體）</a></li>
+              <li><a href="http://www.naturerepublic.cn/index" class="cn">China / 汉语（简体）</a></li>
+            </ul>
+          </dd>
+        </dl>
+        <select>
+          <option>GLOBAL SITE</option>
+          <option>Global / English</option>
+          <option>Global / 中國語（繁體）</option>
+          <option>China / 汉语（简体）</option>
+        </select>
+      </div>
+    </form>
+
+  </div>
+  </div>
+</body>
+
+</html>
