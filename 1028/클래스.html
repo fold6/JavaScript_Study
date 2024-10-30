@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    'use strict';
+    
+    const dog = class {
+      constructor() {
+        //this는 현재 클래스
+        this.name = '홍길동';
+        this.age = 20;
+        this.color = color;
+        this.family = '포메리안';
+      }
+      //생략가능
+      play() {
+        return `${this.name}가 즐겁게 놉니다`;
+      }
+    }
+
+
+    //객체
+    const dog01 = {
+      name: '홍길동',
+      age: 20,
+      color: 'color',
+      family: '포메리안',
+      play: function () {
+        return `${this.name}가 즐겁게 놉니다`;
+      }
+    }
+
+  </script>
+</body>
+
+</html>
