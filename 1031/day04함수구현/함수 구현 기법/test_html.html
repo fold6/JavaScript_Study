@@ -1,0 +1,77 @@
+<!-- makeObject 함수를 활용해 HTML에서 사용자 입력을 받아 동적으로 객체를 생성하는 예제 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="vie wport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Object Creation Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+    }
+    button {
+      width: 100%;
+      padding: 8px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Dynamic Object Creator</h2>
+    <label for="keyInput">Key:</label>
+    <input type="text" id="keyInput" placeholder="Enter key (e.g., name)">
+    <label for="valueInput">Value:</label>
+    <input type="text" id="valueInput" placeholder="Enter value (e.g., Jack)">
+    <button onclick="createObject()">Create Object</button>
+
+    <div id="result" class="result"></div>
+  </div>
+
+  <script>
+    // TypeScript의 makeObject 함수와 비슷하게 구현된 JavaScript 함수
+    function makeObject(key, value) {
+      return { [key]: value };
+    }
+
+    function createObject() {
+      // 입력된 키와 값 가져오기
+      const key = document.getElementById("keyInput").value;
+      const value = document.getElementById("valueInput").value;
+
+      // makeObject 함수 호출로 객체 생성
+      const obj = makeObject(key, value);
+
+      // 결과를 화면에 표시
+      document.getElementById("result").innerText = 
+        `Created Object: ${JSON.stringify(obj)}`;
+    }
+  </script>
+</body>
+</html>
