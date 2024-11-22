@@ -1,0 +1,14 @@
+cd ..
+node 1_express1
+|ode 2_express2
+node 2_express2
+|ls
+npm i ejs
+|ls
+node 3_Ejs1.js
+node 4_Ejs2.js
+|ls
+node 5_Ejs3.js
+npm i jade
+cls
+node 6_jade1.js

@@ -1,0 +1,140 @@
+Node.js
+1. 백엔드 개발자가 사용하는 언어입니다.
+2. 서버에서 실행되는 자바스크립트입니다.
+3. Google V8 JavaScript 엔진을 사용하여 코드를 실행하고 기본 모듈이 자바스크립트로 사용됩니다.
+4. node.js에는 웹 서버(apache, tomcat, iis, zeus ..)과 같은 소프트웨어가 필요없이 웹 서버 역할을 할 수 있는 내장 라이브러리가 있습니다.
+5. NPM이라는 패키지 관리자가 포함되어있습니다. NPM은 node.js의 프로그램을 설치하고 관리하는데 사용됩니다.
+
+도스명령어
+cd / : 최상위 루트로 이동
+cd 폴더경로 : 원하는 폴더로 이동
+cd .. : 상위폴더로 이동
+md 폴더명:  폴더 생성
+
+[TypeScript 소개]
+• 2012년 시작
+– Anders Hejlsberg
+• https://channel9.msdn.com/posts/Anders-Hejlsberg-Introducing-TypeScript
+• 오픈 소스
+• JavaScript의 Superset
+• 순수 JavaScript로 변환됨
+• 강력한 형식
+•      *.d.ts 지원
+• 클래스 기반 개체 지향
+
+
+[타입스크립트를 사용해야하는 이유]
+• 미래 버전의 자바스크립트를 지금 당장 사용 가능
+• 강력한 형식
+  ->형식 안정성
+• Angular, React, Vue와 타입스크립트를 사용
+  ->많은 SPA 프레임워크에서 TypeScript를 기본으로 도입
+
+
+[node.js 설치]
+https://nodejs.org
+LTS 버전설치 
+일반적인 프로그램 설치처럼 다음다음해서 설치완료
+
+설치후 터미널에서
+node --v 버전확인
+npm --v 버전확인
+그러면 설치완료
+NPM: 노드 패키지 관리자
+
+npm 오류발생시 통상 재설치 npm install -g
+
+[타입스크립트 설치]
+npm install -g typescript 
+
+[설치후 타입스크립트 버전확인]
+tsc --version
+
+[타입스크립트의 정보확인]
+tsc --help 
+
+[타입스크립트 프로젝트 폴더 지정]
+tsc --init
+
+[타입스크립트파일을 컴파일-> 순수자바스크립트로]
+tsc app.ts
+->폴더안에 app.js
+
+[타입스크립트파일을 자동컴파일]
+tsc -w 실행
+– Watch Mode
+– 변경된 내용을 자동으로 컴파일
+- 저장을 하면 자동을 컴파일이 실행
+- 자동 컴파일을 중지는 터미널에서 CTRL + C
+
+[TypeScript 주요 특징]->타입스크립트의 주요기능
+• 인터페이스(Interfaces)
+– 인터페이스를 통해서 엔터티(Entity) 형태의 새로운 데이터 타입 정의 – 기본 규칙 정의
+• 클래스(Classes)
+– 일반적인 OOP 특징을 가짐
+– JavaScript의 차후 버전과 호환됨
+• 제네릭(Generics)
+– 가볍고 재사용 가능한 코드 생성
+• 모듈(Modules) - 그룹
+– 관련된 인터페이스, 클래스, 함수 등을 묶어서 관리 – 전역(Global) 스코프에서 작성된 코드 분리
+
+[TypeScript 키워드]
+class           클래스: 멤버 포함(필드, 생성자, 속성, 메서드(함수))
+constructor   	생성자(클래스 초기화)
+export         	 모듈내에 모듈 밖에서도 호출(public)되는 멤버 생성
+extends        	상속시 사용(Java에서의 extends와 동일)
+implements     	인터페이스 구현 코드(C#에서는 그냥 콜론(:)) 
+import         	모듈에 포함(네임스페이스): 네임스페이스 축약형 생성: import abc = Namespace.Sub;
+interface       인터페이스: 코드 규약(계약, 표준) 정의
+module        	컨테이너(클래스 또는 모든 코드)
+public/private 	액세스 접근 한정자(Member visibility)
+=>              this 키워드 범위 내에서의 함수 구문 표현: 람다식(ES6)
+:               형식 지정 구분자(VB의 As 키워드와 동일)
+…               트리플 닷(나머지 매개변수 문법) (C# “params” 키워드와 동일)
+<type name>     형식 변환(Cast/Convert)
+
+
+[변수 선언]
+// str 변수를 string으로 처리
+var str: string = ‘hello’; 
+
+// 매개변수와 함수 반환값을 모두 string으로 처리 
+function foo(name: string) : string {
+return ‘hello’ + name; }
+
+JavaScript/TypeScript의 타입 시스템
+• Number => number
+• Boolean => boolean
+• String => string
+• Function => void
+– functionName : (s: string, t: string) => void = function(s, t) {};
+• Object => any
+• Array => any[]
+
+
+any		모든 JS 값(C# 예, System.Object)
+number		정수형(integer) 또는 실수형(floating point number) Double-precision 64-bit
+boolean               참(true) 또는 거짓(false)
+string                  텍스트(문자열)
+null                     JS null 리터럴
+undefined             JS undefined 리터럴
+(object types)        모든 클래스, 모듈, 인터페이스 등등
+void                    반환값이 없는 함수
+(Array)                 배열형, 컬렉션 타입
+enum                  열거형
+
+
+//클래스 틀
+const 클래스명 = class {
+    constructor(매개변수1, 매개변수2 ..){
+        프로퍼티명 = 값;
+        ...
+        ...
+    }
+    메소드명(매개변수1, 매개변수2 ..){
+
+    }
+    ...
+}
+
+const 객체명 = new 클래스명(값1, 값2 ..);

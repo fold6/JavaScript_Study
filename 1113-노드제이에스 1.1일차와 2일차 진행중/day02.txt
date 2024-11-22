@@ -1,0 +1,12 @@
+포스트맨 다운로드
+https://www.postman.com/downloads/
+
+REST 란?
+"Representational State Transfer"의 약자
+자원을 이름으로 구분하여 해당 자원의 상태를 주고 받는 것을 의미합니다.
+
+CRUD 연산
+CREATE : 생성(POST)
+READ : 조회(GET)
+UPDATE : 수정(PUT)
+DELETE : 삭제(DELETE)

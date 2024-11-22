@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <% const userid='apple' ; const username='김사과' ; %>
+
+    <h2>EJS 첫페이지</h2>
+    <p>아이디:<%=userid%>
+    </p>
+    <p>아이디:<%=username%>
+    </p>
+    <p>생년월일을 입력하세요</p>
+    <p>
+      <select>
+        <% for(let i=1970; i <=2024; i++){ %>
+          <option value="<%=i%>">
+            <%=i%>
+          </option>
+          <% } %>
+      </select>
+    </p>
+
+</body>
+
+</html>

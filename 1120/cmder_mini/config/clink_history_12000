@@ -1,0 +1,6 @@
+cd..
+npm i mongodb
+cls
+|ode 1_mongodb.js
+|ode 1_mongodb.js
+node 1_mongodb.js

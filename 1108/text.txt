@@ -1,0 +1,154 @@
+
+
+
+[]
+npm init --y  -->노드 패키지 초기화
+
+npm install -D ts-node
+
+mkdir src => 폴더 만드는 도스명령어
+
+tsconfig.json에서 "downlevelIteration": true 노드 패키지와 충돌을 방지하기 위해서 활성화 해놤 
+
+npm tsc --init --> tsconfig.json를생성
+
+
+
+
+
+[async/awai]
+async는 비동기식 함수를 의미
+awai는 async함수 안에서 사용할 수 있는 특별한 문법을 의미
+
+[primese 이해]
+자바스크립트는 비동기식으로 서버에서 데이터를 화면에 표시할때 사용 
+
+
+타입스크립트에서 프로미스는  promise라는 이름의 클래스이고
+primese를 사용할때는  new연산자를 적용해서 프로미스 객체를 만들어야 한다
+그리고 new연산자로 프로미스를 객체를 만들때는 콜백함수를 사용한다
+const promise = new Primese(콜백함수)
+
+프로미스의 3가지 상태
+=>new Promise()로 프로미스를 생성하고 종료될때 까지 3가지 상태를 갖는다
+pending(대기): 비동기 처리 로직이 아직 완료되지 않은 상태
+fulfilled(이행): 비동기 처기가 완료되어 프로미스가 결과값을 반환해준 상태
+Rejected(실패): 비동기 함수가 실패하거나 오류가 발생했을때
+
+
+
+Promise는 비동기 작업의 최종 완료 또는 실패를 나타내는 객체이고
+Promise의 콜백 함수에는 (resolve, reject)를 등록해야 한다
+
+resolve(value): 작업이 성공적으로 끝난 경우 그 결과값을 value와 함께 호출
+reject(error): 에러 발생시 에러 객체를 나타내는 error와 함께 호출
+
+
+
+Promise는 제네릭 클래스 형태사용
+const numPromise: Promise<number> = new Promise<number> (콜백함수)
+const strPromise: Promise<string> = new Promise<string> (콜백함수)
+const arrayPromise: Promise<number[]> = new Promise<number[]>(콜백함수)
+
+new Promise<T>((
+    resolve: (sucessValue: T) => void, 
+    reject: (any) => void) => {
+    }=>{
+   //코드 구현
+})
+
+
+
+promise 타입 객체의 then, catch, finally메서드를 메서드 체인 형태로 사용
+
+then: promise에서 resolve함수를 호출한 갑은 then메서드의 콜백함수에 전달
+catch: promise에서 reject 함수를 홏출한 값을 catch메서드의 콜백 함수에 전달
+finally: promise에서 finally함수는 항상 마지막에 호출
+ 
+
+Promise.resolve 메서드 
+이전에 콜백함수에 resolve라는 값이 있었는데 이는 Promise.resolve와 같은 클래스 메소드입니다. 
+resolve안에 값을 넣어주면 연결된 then에 값이 전송됩니다.
+
+Promise.resolve(1).then(value => console.log(value)) // 1
+Promise.resolve('hoony').then(value=>console.log(value)) // hello
+Promise.resolve([4, 5, 6]).then(value=>console.log(value)) // [4 5 6]
+Promise.resolve({name: 'hoony', age: 25}).then(value=>console.log(value)) // {name : 'Jack', age:32}
+
+
+
+Promise.reject 메서드 
+reject에는 Promise가 실패했을 때(오류 등)의 사용하는 도구이고 reject의 파라미터로는 error 객체가 들어가게된다. 
+
+Promise.reject(new Error('error')).catch((err:Error) => console.log('error: ', err.message))
+
+
+
+then 체인
+then을 통해 반환한 값은 또다른 then을 통해서 수신할 수 있습니다. 
+중간에 에러가 발생하면 .catch를 사용하여 에러또한 수신할 수 있습니다. 
+
+Promise.resolve(1).then(value => return value).
+then((value: number) =>{
+	console.log(value)
+    return [1,2,3]
+})
+.then((value:number[])=>{
+	console.log(value)
+    return {name: 'jack', age:32};
+})
+.then((value: {name:string, age: number})=>{
+	console.log(value)
+})
+
+
+
+Promise.all 메서드
+all은 Promise를 객체로 파라미터를 받은 다음 실행된 후 반환되는 값들을 배열형태로 반환합니다. 
+주의 해야 할 점이 all에서 한개라도 에러가 발생하게 되면 then이아니라 catch가 실행되게 된다. 
+
+all(프로미스 객체 배열: Promise[]): Promise<해소된 값들의 배열(혹은 any)>
+
+Promise.race 메서드
+배열으 아이템 주 하나라도 조건을 만족하면 true를 반환
+
+race(프로미스 객체 배열: Promise[]): Promise<가장 먼저 해소된 객체의 값 타임(혹은 error)>
+
+
+
+
+
+
+
+
+Async/Await
+
+await의 경우 피연산자의 값을 반환해 줍니다. 
+만일 피연산자가 Promise 객체이면 then 메서드를 호출해 얻은 값을 반환해줍니다
+
+let value = await Promise 객체 혹은 값
+
+
+async 
+
+await구문은 항상 async라는 이름의 함수 수정자가 있는 함수 몸통에서만 사용할 수 있습니다. 
+
+const hiasync = async()=>{
+	await Promise 객체 혹은 값
+}
+
+async 키워드는 함수를 선언할 때 붙여줄 수 있습니다.
+
+함수에 async 키위드를 붙이고, Promise 생성자 함수를 제거합니다.
+resolve(value); 를 return value; 로 변경합니다.
+reject(error); 부분을 throw new Error(); 로 수정합니다.
+
+async 함수의 성질
+ 
+- 일반함수 처럼 사용가능
+- promise 객체로도 사용할 수 있다. -> 이때문에 Promise.all에도 적용해서 사용할 수 있다. 
+ 
+async 함수는 값을 반환할 수 있습니다. 이때 반환값은 Promise 형태로 변환되므로 then 메소드를 통해서 반환되는 값을 얻어야 합니다. 
+
+
+

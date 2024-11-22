@@ -1,0 +1,59 @@
+포스트맨 다운로드
+https://www.postman.com/downloads/
+
+REST 란?
+"Representational State Transfer"의 약자
+자원을 이름으로 구분하여 해당 자원의 상태를 주고 받는 것을 의미합니다.
+
+CRUD 연산
+CREATE : 생성(POST)
+READ : 조회(GET)
+UPDATE : 수정(PUT)
+DELETE : 삭제(DELETE)
+
+Router 미들웨어
+사용자의 다양한 요청이 들어왔을때 use() 메소드로 설정한 미들웨어가 항상 호출되는 불편한점이 있습니다. 이를 해결하고자 사용하는 미들웨어가 Router 미들웨어입니다.
+
+
+Router 객체 만들기
+const 라우터객체 = express.Router();
+
+http://localhost:3000/member/login
+라우터객체.route(요청패스).get(실행할 함수);
+라우터객체.route(요청패스).post(실행할 함수);      
+
+익스프레스에 Router 객체 적용
+app.use('/', 라우터객체);
+
+    [MVC패턴]
+    M(model)       V(view)            C(controller)
+     데이터베이스    html               프로그램언어
+     mysql             xml(스프링)      java
+ 
+     mongoDB     리액트 뷰 랭큘러         node.js()    
+
+    -->node.js() => 뷰템플릿 EJS, pug
+
+
+
+
+템플릿 엔진
+
+EJS(Embedded JavaScript) 모듈
+EJS 모듈은 템플릿 엔진 모듈입니다. 템플릿 엔진 모듈은 특정한 형식인 파일로 부터 HTML 페이지를 생성하는 모듈입니다.
+// npm i ejs
+
+EJS 파일 형식의 특수 코드
+<% ~~~ code ~~~~ %> : 자바스크립트 코드를 입력하는 영역입니다.
+<%=변수 또는 값%> : 데이터를 출력합니다.
+<%-변수 또는 객체%> : ejs파일 전체를 전달합니다.
+
+EJS 데이터를 전달
+render() : 메소드의 매개 변수에 전달하고자 하는 데이터를 입력하여 전달합니다.
+ejs.render(data);
+ejs.render(data,{속성명:'속성값'});
+ejs.render(data,{속성명:'속성값',속성명2:ejs.render(content)});
+
+
+PUG(구 jade)
+http://jade-lang.com/

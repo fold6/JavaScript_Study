@@ -1,0 +1,61 @@
+쿠키(cookie)는 웹 클라이언트(사용자의 웹 브라우저)와 웹 서버(Express)간에 통신하면서 정보를 저장하고 유지하는 기술
+쿠키는 웹 사이트에서 특정 정보(사용자 ID, 선호 언어, 쇼핑 카트 내용 등)를 저장하고 전송하는 데 사용된다
+Express에서는 cookie-parser 미들웨어를 사용하여 쿠키를 생성, 저장, 확인할 수 있다.
+
+예를 들어, 사용자가 웹사이트에 로그인을 할 때, 서버는 사용자의 아이디와 비밀번호를 인증하고 쿠키를 클라이언트에 저장한다. 그 다음에 사용자가 웹사이트에 다시 접속할 때, 클라이언트는 저장된 쿠키를 서버에 전송하여, 서버는 이 쿠키를 통해 사용자를 식별한다.
+즉, 쿠키는 웹사이트에서 사용자 정보를 저장하고 공유하는데 사용되는 기술이다.
+
+cookie-parser 모듈
+요청된 쿠키를 쉽게 사용할 수 있도록 도와주는 모듈입니다. 
+express(req, res) 객체에 cookie를 사용할 수 있도록 기능을 부여합니다.
+익스프레스 객체에 미들웨어로 등록
+
+cookieParser() : 일반 쿠키를 사용하는 경우
+cookieParser('암호화하기 위한 문자') : 암호화된 쿠키를 사용하는 경우
+
+쿠키 설정하기
+res.cookie‎('키', '값', {
+    쿠키 생성 옵션
+});
+
+쿠키 생성 옵션
+:maxAge  만료시간을 밀리초 단위로 설정합니다.
+expires : 만료 시간을 GMT 시간으로 설정합니다.
+path ; cookie의 경로를 설정합니다. 기본 설정은 "/" 입니다.
+
+
+쿠키 조회하기
+req.cookie‎s.cookie‎키  : 일반 쿠키
+req.signedCookies.cookie‎키 : 암호화된 쿠키
+
+쿠키 삭제하기
+res.clearCookie('키', {path: '경로'});
+
+
+express-session 모듈( npm i cookie-parser)
+express에서 세션을 관리하기 위해 사용하는 미들웨어 모듈입니다.
+
+app.use(session({세션모듈의 옵션}));
+
+세션 모듈의 옵션
+secret : 쿠키를 임의로 변조하는 것을 방지하기 위한 값입니다. 이 값을 통하여 세션을 암호화하여 저장합니다.
+resave : 세션을 언제나 저장할지 지정하는 값입니다. 이 값을 false로 하는 것을 권장하고 필요에 따라 true로 설정하기도 합니다.
+saveUninitialized : 세션이 저장되기 전에 saveUninitialized 상태로 미리 만들어서 저장합니다.
+
+세션 초기 설정
+let 세션객체명 = req.session;
+세션객체명.변수명 = 값;
+
+let sess = req.session;
+sess.userid = 'apple';
+
+세션 변수 사용
+세션객체명.변수명;
+console.log(sess.userid);
+
+세션 삭제
+req.session.destory(() => {
+    세션 삭제시 처리할 문장;
+});
+
+ 

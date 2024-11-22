@@ -1,0 +1,97 @@
+모듈이란
+Node.js으로 앱을 개발하기 위해서는 모듈 시스템을 사용한다.
+이때, 모듈이란 ‘미리 만들어둔 함수들의 집합’이라고 할 수 있다.
+
+사용자 정의 모듈
+사용자가 직접 만들어 코드를 관리할 수 있도록 작성하는 모듈입니다.
+
+1. 모듈 작성
+module.exports = () => {
+    모듈내의 코드
+    ...
+    ...
+}
+
+사용
+const 객체명 = require('파일명');
+
+2. 모듈 작성
+모듈내의 코드
+...
+...
+module.export = 변수;
+
+사용
+const 객체명 = require('변수명');
+
+[express 메소드]
+use() : 미들웨어 함수를 사용합니다. __미들웨어를 등록
+get() : get으로 사용자 정보를 전달 받습니다.
+set() : 서버 설정을 위한 속성을 설정합니다.
+redirect() : 웹 페이지의 경로를 강제로 이동시킵니다.
+send() : 클라이언트에 응답 데이터를 보냅니다. 전달할 수 있는 데이터는 html, buffer, json, json 배열.. 등입니다.
+header() : 헤더를 확인합니다.
+
+
+REST 란?
+"Representational State Transfer"의 약자
+자원을 이름으로 구분하여 해당 자원의 상태를 주고 받는 것을 의미합니다.
+
+CRUD 연산
+CREATE : 생성(POST)
+READ : 조회(GET)
+UPDATE : 수정(PUT)
+DELETE : 삭제(DELETE)
+
+
+JSON(JavaScript Object Notation)
+데이터를 교환하고 저장하기 위해 만들어진 텍스트 기반의 데이터 교환 표준입니다.
+[객체]
+{
+    "name":"김사과",
+    "gender":"여자",
+    "age":20,
+    "job":"학생",
+    "height":155.5,
+    "hobby":[
+        "드라이브",
+        "쇼핑",
+        "영화감상"
+    ],
+    "dog":null
+}
+
+[배열]
+{
+    "student":[
+        {"name":"김사과", "gender":"여자"},
+        {"name":"오렌지", "gender":"남자"},
+        {"name":"반하나", "gender":"여자"}
+    ]
+}
+
+
+JSON.parse()
+JSON 포맷으로 되어 있는 문자열을 JSON 객체로 변환
+JSON.parse(String 문자열)
+
+JSON.stringify()
+JSON 객체를 JSON 포맷의 문자열로 변환
+JSON.stringify(JSON 객체)
+
+
+***** 기존의 패키지를 그대로 다른 프로젝트에 사용할때
+package.json을 복사해서 옮기고 터미널에는  npm install
+
+
+
+
+
+
+
+
+
+
+
+
+
