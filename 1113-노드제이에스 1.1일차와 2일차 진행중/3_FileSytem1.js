@@ -11,5 +11,5 @@ fs.readFile("text1.txt", "utf-8", (err, data) => {
 });
 
 //동기식
-const text = fs.readFileSync("text1.txt", "utf-8"); // 동기
-console.log(`동기식으로 읽음 : ${text}`);
+// const text = fs.readFileSync("text1.txt", "utf-8"); // 동기
+// console.log(`동기식으로 읽음 : ${text}`);

@@ -1,0 +1,47 @@
+2ee0 app_context::start_logger  476 ---- 2024/11/20 21:15:04.774 -------------------------------------------------
+2ee0 app_context::start_logger  479 Host process is 'cmd.exe' (pid 12000)
+2ee0 app_context::start_logger  483 DLL path is 'C:\Users\user\Desktop\nodejs\day05\cmder_mini\vendor\clink'
+2ee0 app_context::start_logger  498 Windows version 10.0.19045 (x64)
+2ee0 app_context::start_logger  500 Clink version 1.6.14.93b83f (x64)
+2ee0 hook_setter::hook_setter  159 >>> Started hook transaction.
+2ee0 hook_setter::attach_iat   316 Attempting to hook SetEnvironmentVariableW in IAT for module 00007FF740410000.
+2ee0 pe_info::iterate_imports  195 Found import in 'api-ms-win-core-processenvironment-l1-1-0.dll'
+2ee0 find_iat                  124 Found import at 00007FF740443860 (value is 00007FFE7CF23490).
+2ee0 hook_setter::attach_iat   316 Attempting to hook SetEnvironmentStringsW in IAT for module 00007FF740410000.
+2ee0 pe_info::iterate_imports  195 Found import in 'api-ms-win-core-processenvironment-l1-1-0.dll'
+2ee0 find_iat                  124 Found import at 00007FF740443888 (value is 00007FFE7CF1D560).
+2ee0 hook_setter::attach_iat   316 Attempting to hook WriteConsoleW in IAT for module 00007FF740410000.
+2ee0 pe_info::iterate_imports  195 Found import in 'api-ms-win-core-console-l1-1-0.dll'
+2ee0 find_iat                  124 Found import at 00007FF7404434F8 (value is 00007FFE7CEC76D0).
+2ee0 hook_setter::attach_iat   316 Attempting to hook GetEnvironmentVariableW in IAT for module 00007FF740410000.
+2ee0 pe_info::iterate_imports  195 Found import in 'api-ms-win-core-processenvironment-l1-1-0.dll'
+2ee0 find_iat                  124 Found import at 00007FF740443880 (value is 00007FFE7CEE5430).
+2ee0 hook_setter::commit       207 <<< Hook transaction committed.
+2ee0 hook_setter::hook_setter  159 >>> Started hook transaction.
+2ee0 hook_setter::detach_iat   359 Attempting to unhook 00007FFE20DA5200 from GetEnvironmentVariableW in IAT for module 00007FF740410000.
+2ee0 pe_info::iterate_imports  195 Found import in 'api-ms-win-core-processenvironment-l1-1-0.dll'
+2ee0 find_iat                  124 Found import at 00007FF740443880 (value is 00007FFE20DA5200).
+2ee0 hook_setter::commit       207 <<< Hook transaction committed.
+2ee0 hook_setter::hook_setter  159 >>> Started hook transaction.
+2ee0 hook_setter::attach_iat   316 Attempting to hook ReadConsoleW in IAT for module 00007FF740410000.
+2ee0 pe_info::iterate_imports  195 Found import in 'api-ms-win-core-console-l1-1-0.dll'
+2ee0 find_iat                  124 Found import at 00007FF7404434E0 (value is 00007FFE7CFD0AD0).
+2ee0 hook_setter::commit       207 <<< Hook transaction committed.
+2ee0 hook_setter::hook_setter  159 >>> Started hook transaction.
+2ee0 hook_setter::attach_iat   316 Attempting to hook SetConsoleTitleW in IAT for module 00007FF740410000.
+2ee0 pe_info::iterate_imports  195 Found import in 'api-ms-win-core-console-l2-2-0.dll'
+2ee0 find_iat                  124 Found import at 00007FF740443558 (value is 00007FFE7CF36CD0).
+2ee0 hook_setter::commit       207 <<< Hook transaction committed.
+2ee0 win_screen_buffer::begin  366 Using native terminal support (auto mode found 'ConEmuHk64.dll').
+2ee0 init_cached_font          577 console font "굴림체", cell width 3, pitch and family 0x36
+2ee0 init_cached_font          578 East Asian Ambiguous mode 3
+2ee0 host_lua::load_scripts    192 Loaded 2 Lua scripts in 458 ms
+2ee0 @~clink~/app/update.lua   370 Clink updater: too soon to check for updates (1732012170 vs 1732104907).
+2ee0 history_db::initialise   1321 master bank ctag: |CTAG_1731578200_3142515_15720_0
+2ee0 history_db::compact      1599 History:  33 active, 60 deleted
+2ee0 history_db::compact      1599 History:  32 active, 61 deleted
+2ee0 history_db::compact      1599 History:  32 active, 61 deleted
+2ee0 history_db::compact      1599 History:  31 active, 62 deleted
+2ee0 history_db::compact      1599 History:  31 active, 62 deleted
+2ee0 history_db::compact      1599 History:  31 active, 62 deleted
+2ee0 history_db::compact      1599 History:  31 active, 62 deleted

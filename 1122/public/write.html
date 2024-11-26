@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>파일 업로드</title>
+</head>
+<body>
+    <h2>파일 업로드</h2>
+    <form method="post" action="/write" enctype="multipart/form-data">
+        <p><label>제목 : <input type="text" name="title"></label></p>
+        <p>내용</p>
+        <p><textarea cols="50" rows="5" name="content"></textarea></p>
+        <p><label>파일 : <input type="file" name="photo"></label></p>
+        <p><input type="submit" value="확인"></p>
+    </form>
+</body>
+</html>

@@ -1,37 +1,37 @@
-Node.js
-1. 백엔드 개발자가 사용하는 언어입니다.
-2. 서버에서 실행되는 자바스크립트입니다.
-3. Google V8 JavaScript 엔진을 사용하여 코드를 실행하고 기본 모듈이 자바스크립트로 사용됩니다.
-4. node.js에는 웹 서버(apache, tomcat, iis, zeus ..)과 같은 소프트웨어가 필요없이 웹 서버 역할을 할 수 있는 내장 라이브러리가 있습니다.
-5. NPM이라는 패키지 관리자가 포함되어있습니다. NPM은 node.js의 프로그램을 설치하고 관리하는데 사용됩니다.
+  Node.js
+  1. 백엔드 개발자가 사용하는 언어입니다.
+  2. 서버에서 실행되는 자바스크립트입니다.
+  3. Google V8 JavaScript 엔진을 사용하여 코드를 실행하고 기본 모듈이 자바스크립트로 사용됩니다.
+  4. node.js에는 웹 서버(apache, tomcat, iis, zeus ..)과 같은 소프트웨어가 필요없이 웹 서버 역할을 할 수 있는 내장 라이브러리가 있습니다.
+  5. NPM이라는 패키지 관리자가 포함되어있습니다. NPM은 node.js의 프로그램을 설치하고 관리하는데 사용됩니다.
 
-node.js 다운로드
-https://nodejs.org
-(LTS버전 다운로드)
+  node.js 다운로드
+  https://nodejs.org
+  (LTS버전 다운로드)
 
-node.js 버전 확인
-cmd 창에서 node -v 명령어로 확인합니다.
+  node.js 버전 확인
+  cmd 창에서 node -v 명령어로 확인합니다.
 
-npm 버전 확인
-cmd 창에서 npm -v 명령어로 확인합니다.
+  npm 버전 확인
+  cmd 창에서 npm -v 명령어로 확인합니다.
 
 
-[기본폴더세팅]
-npm init : 옵션을 직접 제공
-npm init -y : 기본값을 기준으로 바로 생성
+  [기본폴더세팅]
+  npm init : 옵션을 직접 제공
+  npm init -y : 기본값을 기준으로 바로 생성
 
-[node.js 실행하는 방법]
-node 파일이름.js
+  [node.js 실행하는 방법]
+  node 파일이름.js
 
-[FileSystem 모듈]
-파일처리와 관련된 모듈입니다. 
-node.js에서 가장 중요하고 기초가 되는 모듈입니다.
+  [FileSystem 모듈]
+  파일처리와 관련된 모듈입니다. 
+  node.js에서 가장 중요하고 기초가 되는 모듈입니다.
 
-메소드
-readFile() : 파일을 비동기적으로 읽습니다.
-readFileSync() : 파일을 동기적으로 읽습니다.
-writeFile() : 파일을 비동기적으로 씁니다.
-writeFileSync() : 파일을 동기적으로 씁니다.
+[메소드]
+- readFile() : 파일을 비동기적으로 읽습니다.
+- readFileSync() : 파일을 동기적으로 읽습니다.
+- writeFile() : 파일을 비동기적으로 씁니다.
+- writeFileSync() : 파일을 동기적으로 씁니다.
 
 
 * 동기와 비동기
@@ -39,69 +39,69 @@ writeFileSync() : 파일을 동기적으로 씁니다.
 동작이 끝나지 않은 상태에서도 제어권을 넘긴 후 프로그램을 계속 진행하면 비동기식이라고 합니다.
 
 
-[http 모듈]
-node.js에서 가장 기본적이고 중요한 서버 모듈입니다. 
-HTTP 웹 서버를 생성하는 것과 관련된 모든 기능을 담당합니다.
+  [http 모듈]
+  node.js에서 가장 기본적이고 중요한 서버 모듈입니다. 
+  HTTP 웹 서버를 생성하는 것과 관련된 모든 기능을 담당합니다.
 
-1. server 객체
-http 모듈의 createServer() 메소드를 사용하여 server 객체를 생성합니다.
+  1. server 객체
+  http 모듈의 createServer() 메소드를 사용하여 server 객체를 생성합니다.
 
-//메소드
-listen() : 서버를 실행하고 클라이언트를 기다립니다.
-close() : 서버를 종료합니다.
+  //메소드
+  listen() : 서버를 실행하고 클라이언트를 기다립니다.
+  close() : 서버를 종료합니다.
 
-//이벤트
-request : 클라이언트가 서버에 요청할 때 발생하는 이벤트입니다.
-connection : 클라이언트가 접속할 때 발생하는 이벤트입니다.
-close : 서버가 종료될 때 발생하는 이벤트입니다.
+  //이벤트
+  request : 클라이언트가 서버에 요청할 때 발생하는 이벤트입니다.
+  connection : 클라이언트가 접속할 때 발생하는 이벤트입니다.
+  close : 서버가 종료될 때 발생하는 이벤트입니다.
 
-2. request 객체
-클라이언트가 서버에게 전달하는 메세지(정보)를 담는 객체입니다.
+  2. request 객체
+  클라이언트가 서버에게 전달하는 메세지(정보)를 담는 객체입니다.
 
-//속성
-method : 클라이언트 요청 방식을 나타냅니다. (GET(웹주소로데이터전달), POST(html폼문으로 데이터 전달))
-url : 클라이언트가 요청한 URL을 나타냅니다.
+  //속성
+  method : 클라이언트 요청 방식을 나타냅니다. (GET(웹주소로데이터전달), POST(html폼문으로 데이터 전달))
+  url : 클라이언트가 요청한 URL을 나타냅니다.
 
-http://www.ryuzy.com/blog/index?userid=apple&username=김사과 =>GET
-<---------------------------------------------------------->
-                       URL
-<----------------------------->
-               URL
-                   <--------->
-                     pathname
-3. response 객체
-서버에서 클라이언트로 응답 메세지를 전송시켜주는 객체입니다.
+  http://www.ryuzy.com/blog/index?userid=apple&username=김사과 =>GET
+  <---------------------------------------------------------->
+                        URL
+  <----------------------------->
+                URL
+                    <--------->
+                      pathname
+  3. response 객체
+  서버에서 클라이언트로 응답 메세지를 전송시켜주는 객체입니다.
 
-//메소드
-writeHead() : 응답 헤더를 작성합니다.
-end() : 응답 본문을 작성합니다.
+  //메소드
+  writeHead() : 응답 헤더를 작성합니다.
+  end() : 응답 본문을 작성합니다.
 
-MIME 형식
-text/plain : 일반적인 text 파일
-text/html : html 형식 파일
-text/css : css 형식 파일
-text/xml : xml 형식 파일
-image/jpeg : jpeg 이미지 파일
-image/png : png 이미지 파일
-video/mpeg : mpeg 동영상 파일
-audio/mp3 : mp3 음악 파일
-...
+  MIME 형식
+  text/plain : 일반적인 text 파일
+  text/html : html 형식 파일
+  text/css : css 형식 파일
+  text/xml : xml 형식 파일
+  image/jpeg : jpeg 이미지 파일
+  image/png : png 이미지 파일
+  video/mpeg : mpeg 동영상 파일
+  audio/mp3 : mp3 음악 파일
+  ...
 
 
-package 설치하기
-npm install 모듈명(npm i 모듈명)
-npm i express
+  package 설치하기
+  npm install 모듈명(npm i 모듈명)
+  npm i express
 
-package 복원하기
-npm install
+  package 복원하기
+  npm install
 
-익스프레스 모듈
-http 모듈만 사용해서 웹 서버를 구성하면 직접 많은 기능을 개발해야 합니다. 이 문제를 해결하기 위해 만들어진 모듈이 익스프레스입니다. 익스프레스 모듈을 사용하면 간단한 코드로 웹 서버의 기능을 대부분 구현할 수 있고, 미들웨어와 라우터를 사용하여 편리하게 웹 서버를 구성할 수 있습니다.
+  익스프레스 모듈
+  http 모듈만 사용해서 웹 서버를 구성하면 직접 많은 기능을 개발해야 합니다. 이 문제를 해결하기 위해 만들어진 모듈이 익스프레스입니다. 익스프레스 모듈을 사용하면 간단한 코드로 웹 서버의 기능을 대부분 구현할 수 있고, 미들웨어와 라우터를 사용하여 편리하게 웹 서버를 구성할 수 있습니다.
 
-메소드
-use() : 미들웨어 함수를 사용합니다.
-get() : get으로 사용자 정보를 전달 받습니다.
-set() : 서버 설정을 위한 속성을 설정합니다.
-redirect() : 웹 페이지의 경로를 강제로 이동시킵니다.
-send() : 클라이언트에 응답 데이터를 보냅니다. 전달할 수 있는 데이터는 html, buffer, json, json 배열.. 등입니다.
-header() : 헤더를 확인합니다.
+  메소드
+  use() : 미들웨어 함수를 사용합니다.
+  get() : get으로 사용자 정보를 전달 받습니다.
+  set() : 서버 설정을 위한 속성을 설정합니다.
+  redirect() : 웹 페이지의 경로를 강제로 이동시킵니다.
+  send() : 클라이언트에 응답 데이터를 보냅니다. 전달할 수 있는 데이터는 html, buffer, json, json 배열.. 등입니다.
+  header() : 헤더를 확인합니다.
