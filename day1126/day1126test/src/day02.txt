@@ -1,0 +1,90 @@
+JSX
+
+태그에 style과 CSS class를 설정하는 방법
+
+background-color -> backgroundColor
+
+[css파일을 별도로 만드는 경우->파일명.css 파일을 만들 경우]
+- import 
+- className 속성으로 등록
+
+주석을 작성하는 방법
+{ /* */ }
+
+[파일안에 인라인으로 스타일 선언하는 경우->css 파일을 따로 만들지 않는 경우]
+function App() {
+  const 객체명 = {
+    backgroundColor: "skyblue",
+    color: "white",
+    fontSize: 40,
+    padding: "1rem",
+  };
+  return(
+    <div style="객체명" ></div>
+    <div style="backgroundColor: "skyblue", color: "white"></div>
+  )
+}
+
+[props]
+
+* props를 통해 컴포넌트에게 값 전달하는 방법
+
+<컴포넌트명 속성명1=값1 속성명2=값2/>
+
+function 컴포넌트명(props){
+    "props.속성명" 으로 사용
+}
+
+function 컴포넌트명({속성명1, 속성명2}){
+    "속성명1" 으로 사용
+}
+
+* 기본값을 설정하는 방법
+
+컴포넌트명.defaultProps = {
+    설정할 내용
+}
+
+[조건부 렌더링]
+특정 조건에 따라 다른 결과물을 렌더링하는 것을 의미합니다.
+
+
+
+useState
+리액트에서 값의 상태를 관리하는 Hooks입니다. 리액트 16.8버전 부터 Hooks라는 기능이 도입되면서 함수형 컴포넌트에서도 상태를 관리할 수 있게 되었습니다. 
+
+
+컴포넌트를 만드는 방법
+
+                    class                   function
+                상태를 관리(o)              상태 관리(x) -> 리액트 16.8버전 부터 가능하게 됨
+
+불변성을 지켜주어야만 리엑트 컴포넌트에서 상태가 업데이트가 됐음을 감지할 수 있고 이에 따라 필요한 리렌더링이 진행됩니다.
+
+
+useRef로 특정 DOM 선택하기
+리액트에서 DOM에 직접 접근하는 방법을 사용하기 위해 useRef라는 Hooks를 사용합니다.
+
+useEffect
+컴포넌트가 마운트(처음 나타났을 때) 됐을 때, 언마운트(사라질 때) 됐을 때, 그리고 업데이트(특정 props가 바뀔 때) 될 때 특정 작업을 처리할 수 있습니다.
+
+컴포넌트가 마운트시 하는 작업
+- props로 받은 값을 컴포넌트의 로컬 상태로 설정
+- 외부 API 요청(REST API등..)
+- 라이브러리 사용
+- setInterval을 통한 반복작업 또는 setTimeout을 통한 작업 예약
+
+컴포넌트가 언마운트시 하는 작업
+- 라이브러리 인스턴스 제거
+- setInterval, setTimeout을 사용하여 등록한 작업을 clear 할때
+
+
+useEffect(함수, 배열)
+함수 : 처음 컴퍼넌트가 나타날 때 실행할 함수
+배열 : 의존값이 들어있는 배열, 만약 배열을 비우게 된다면 컴포넌트가 처음 나타날 때만 useEffect에 등록한 함수가 호출됨
+
+cleanup 함수
+useEffect에서는 함수를 반환할 수 있음. useEffect에 대한 뒷정리를 합니다. deps가 비어있는 경우에 컴포넌트가 사라질 때 cleanup 함수가 호출됨
+
+useMemo
+성능 최적화를 위해 연산된 값을 재사용합니다.

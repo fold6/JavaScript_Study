@@ -1,11 +1,11 @@
 import React from "react";
 
-function MainImg(){
-    return(
+function MainImg() {
+  return (
     <>
-    <div className="mainimg">img</div>
+      <div className="mainimg">img</div>
     </>
-    );
+  );
 }
 
 export default MainImg;

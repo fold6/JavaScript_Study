@@ -2,10 +2,10 @@
   margin: 0;
   padding: 0;
 }
-
 body {
   margin: 0;
   padding: 0;
+  font-family: 맑은고딕;
 }
 
 ul,
@@ -14,5 +14,5 @@ li {
 }
 
 img {
-  border: none;
+  border: 0;
 }

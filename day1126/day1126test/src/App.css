@@ -1,0 +1,10 @@
+body {
+  padding: 20px;
+  background-color: aquamarine;
+}
+.deeppink {
+  background-color: deeppink;
+  width: 100px;
+  height: 40px;
+  padding: 10px;
+}

@@ -1,13 +1,13 @@
-.header{
+.header {
   width: 100%;
   height: 150px;
-  background: aqua;
-  display: flex; /* Flexbox를 사용 */
-  justify-content: space-between; /* 자식 요소 간 간격을 균일하게 */
-  align-items: center; /* 세로 정렬 */
+  background-color: aquamarine;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.logo{
+.logo {
   width: 150px;
   height: 150px;
   display: flex;
@@ -17,10 +17,10 @@
   background-color: wheat;
 }
 
-
-.nav{
+.nav {
   width: 800px;
   height: 150px;
+
   display: flex;
   justify-content: space-around;
   align-items: center;
