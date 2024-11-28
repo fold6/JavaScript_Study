@@ -1,11 +1,14 @@
 import React,{useState,useRef} from "react";
+// 여러개의 상태를 관리
 
 // const MultiInput = () =>{}
 
 function MultiInput() {
     const [inputs, setInputs] = useState({userid:"",name:""})
+    //const [배열명, setInputs] = useState(배열명=[]) 배열로 상태값 관리
     const {userid,name} = inputs;//{userid:"",name:""} 비구조 할당을 통해 값 전달
-    const useridInput = useRef();
+    const useridInput = useRef();//특정 DOM을 선택하기는 설정하고 
+    //<input name="userid" ref={useridInput}/> 선택되는 DOM에 ref={useridInput} 선언함
     
     const onChange = (e) => {
         const {name, value} = e.target;
