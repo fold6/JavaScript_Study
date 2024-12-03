@@ -1,0 +1,25 @@
+/*기본스타일시트*/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "맑은고딕";
+  font-size: 15px;
+  color: #333;
+}
+
+img {
+  border: 0;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}

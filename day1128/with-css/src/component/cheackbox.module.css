@@ -1,0 +1,19 @@
+.Checkbox{
+    padding: 1rem;
+    background-color: lightcoral;
+    color: #ffffff;
+}
+.Checkbox label input{
+    width: 0;
+    height: 0;
+    position: absolute;
+    /* opacity: 0; */
+}
+.Checkbox span{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.checked {
+    color: dodgerblue;
+}
